@@ -1,0 +1,1 @@
+require("netgate")(__dirname);

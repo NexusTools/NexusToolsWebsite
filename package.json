@@ -1,0 +1,40 @@
+{
+	"name": "nexustools",
+	"version": "1.0.0",
+	"homepage": "https://nexustools.com/",
+	"hosts": {
+				"fonts.nexustools.com": [
+						{
+							"handler": "crossorigin"
+						},
+						"src/static/fonts"
+				],
+        "img.nexustools.com": [
+            "src/static/img"
+        ],
+        "css.nexustools.com": [
+            "src/static/css"
+        ],
+        "jvm.nexustools.com": [
+            "src/static/jvm"
+        ],
+        "js.nexustools.com": [
+            "src/static/js"
+        ],
+        "nexustools.com": [
+						"src/www"
+        ]
+    },
+	"dependencies": {
+		"async": "latest",
+		"lodash": "latest",
+		"netgate": ">=0.3.6",
+		"nexusframework": "~0.1.7"
+	},
+	"bundleDependencies": [],
+	"devDependencies": {
+       "nw": "latest"
+	},
+	"main": "server.js",
+	"private": true
+}
