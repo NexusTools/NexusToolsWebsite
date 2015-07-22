@@ -8,7 +8,7 @@ div.footer {
 
 body > nav {
   white-space: nowrap;
-  background-color: #313944;
+  background-color: #313944 !important;
   -webkit-box-shadow: 0 0 3px 0 #000000;
   box-shadow: 0 0 3px 0 #000000;
 }
