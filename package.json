@@ -13,6 +13,11 @@
             "src/static/img"
         ],
         "css.nexustools.com": [
+				{
+					"handler": "sass",
+					"sources": "src/sources/css",
+					"static": "src/static/css"
+				},
             "src/static/css"
         ],
         "jvm.nexustools.com": [

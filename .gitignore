@@ -1,4 +1,10 @@
+/src/sources/NexusTools-Pages/nbproject/private/
+/src/sources/NexusTools-Pages/build/
+/src/sources/NexusTools-Pages/dist/
+
+.sass-cache
 log.txt
 node_modules
 npm*
 *~
+

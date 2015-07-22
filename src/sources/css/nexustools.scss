@@ -4,6 +4,10 @@ div.footer {
   text-align: center;
   font-size: 0.8em;
   opacity: 0.6;
+
+  > div {
+    height: 2px;
+  }
 }
 
 body > nav {
