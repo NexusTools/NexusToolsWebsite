@@ -1,0 +1,14 @@
+div.footer {
+  margin-top: 24px;
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: 0.8em;
+  opacity: 0.6;
+}
+
+body > nav {
+  white-space: nowrap;
+  background-color: #313944;
+  -webkit-box-shadow: 0 0 3px 0 #000000;
+  box-shadow: 0 0 3px 0 #000000;
+}
