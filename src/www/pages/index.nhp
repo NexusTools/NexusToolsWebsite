@@ -37,7 +37,7 @@
         <p>We've produced quite a few mods for minecraft, and we host some servers, check it all out!</p>
         <p>
           <a href="/projects/minecraft-mods" class="btn btn-info" role="button">Mods</a>
-          <a href="/servers" class="btn btn-primary" role="button">Servers</a>
+          <a href="/servers/minecraft" class="btn btn-primary" role="button">Servers</a>
         </p>
       </div>
     </div>
