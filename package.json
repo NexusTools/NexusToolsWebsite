@@ -4,42 +4,56 @@
 	"homepage": "https://nexustools.com/",
 	"hosts": {
 				"fonts.nexustools.com": [
-						{
-							"handler": "crossorigin"
-						},
-						"src/static/fonts"
+          {
+            "handler": "crossorigin"
+          },
+          "src/static/fonts"
 				],
         "img.nexustools.com": [
-            "src/static/img"
+          "src/static/img"
         ],
         "css.nexustools.com": [
-				{
-					"handler": "sass",
-					"sources": "src/sources/css",
-					"static": "src/static/css"
-				},
-            "src/static/css"
+          "src/static/css"
         ],
         "jvm.nexustools.com": [
-            "src/static/jvm"
+          {
+            "handler": "crossorigin"
+          },
+          "src/static/jvm"
         ],
         "js.nexustools.com": [
-            "src/static/js"
+          "src/static/js"
         ],
         "nexustools.com": [
-						"src/www"
+          {
+            "handler": "config",
+            "base": "src/static/config"
+          },
+          {
+            "handler": "utils"
+          },
+          {
+            "handler": "nexusframework",
+            "skeleton": "theme/skeleton",
+            "errordoc": {
+                "404": "errdoc/404",
+                "403": "errdoc/403"
+            },
+            "root": "src/www",
+            "pages": "pages"
+          }
         ]
     },
 	"dependencies": {
 		"async": "latest",
 		"lodash": "latest",
-		"netgate": ">=0.3.6",
-		"nexusframework": "~0.1.7"
+    "marked": "~0.3.3",
+		"netgate": "~0.3.6",
+    "request": "~2.60.0",
+		"nexusframework": "~0.1.8",
+    "chokidar": "~1.0.5"
 	},
 	"bundleDependencies": [],
-	"devDependencies": {
-       "nw": "latest"
-	},
 	"main": "server.js",
 	"private": true
 }

@@ -1,12 +1,38 @@
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+
+.btn {
+  margin: 10px 2px;
+}
+
 div.footer {
   margin-top: 24px;
   margin-bottom: 12px;
-  text-align: center;
+  padding: 0 $grid-gutter-width/2;
   font-size: 0.8em;
-  opacity: 0.6;
+  
 
   > div {
     height: 2px;
+  }
+  
+  @media (min-width: $screen-sm-min) {
+    text-align: center;
+    opacity: 0.6;
+    
+    .social {
+      transform: scale(0.8);
+      margin-bottom: 0px;
+    }
+  }
+  
+  .social {
+    margin-bottom: 12px;
+    
+    .btn {
+      font-size: 16px;
+      padding: 6px;
+    }
   }
 }
 
@@ -15,4 +41,174 @@ body > nav {
   background-color: #313944 !important;
   -webkit-box-shadow: 0 0 3px 0 #000000;
   box-shadow: 0 0 3px 0 #000000;
+}
+
+body {
+  @media (max-width: $screen-xs-max) {
+    background: white;
+  }
+  
+  .page {
+    background: white;
+    min-height: 400px;
+    
+    .row {
+      padding: 0 $grid-gutter-width/2;
+    }
+    
+    @media (max-width: $screen-xs-max) {
+      @for $i from 1 to $grid-columns {
+        .col-xs-#{$i},
+        .col-sm-#{$i},
+        .col-md-#{$i},
+        .col-lg-#{$i} {
+          padding: 0px;
+        }
+      } 
+    }
+
+    @include transition(transform ease 0.5s, opacity ease 0.5s);
+    
+    .readme {
+      h1 {
+        display: none;
+      }
+      img {
+        margin: 2px;
+      }
+      text-align: left;
+    }
+
+    &.loading {
+      pointer-events: none;
+      transform: perspective(600px) rotateX(20deg);
+      opacity: 0;
+    }
+    
+    .sidebar {
+      text-align: left;
+      margin-bottom: 20px;
+      @media (min-width: $screen-md-min) {
+        float: right;
+
+        margin-top: 50px;
+        .btn {
+          width: 100%;
+          margin-top: 0px;
+        }
+      }
+    }
+
+    @media (min-width: $screen-sm-min) {
+      text-align: center;
+      padding: $grid-gutter-width;
+      box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
+    }
+    
+      
+  }
+}
+
+.overlay {
+  display: none;
+  z-index: 5000000;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  
+  
+  @include transition(opacity ease 0.2);
+  opacity: 0;
+  
+  &.ready {
+    display: block;
+  }
+  &.open {
+    opacity: 1;
+  }
+  
+  .sk-cube-grid {
+    width: 40px;
+    height: 40px;
+    margin: 200px auto;
+
+    .sk-cube {
+      width: 33%;
+      height: 33%;
+      background-color: white;
+      float: left;
+      -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out, sk-cubeGridBackground 2.6s infinite ease-in-out;
+              animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out, sk-cubeGridBackground 2.6s infinite ease-in-out; 
+      -webkit-box-shadow: 0 0 1px 0 #000000;
+      box-shadow: 0 0 1px 0 #000000;
+    }
+    .sk-cube1 {
+      -webkit-animation-delay: 0.2s;
+              animation-delay: 0.2s; }
+    .sk-cube2 {
+      -webkit-animation-delay: 0.3s;
+              animation-delay: 0.3s; }
+    .sk-cube3 {
+      -webkit-animation-delay: 0.4s;
+              animation-delay: 0.4s; }
+    .sk-cube4 {
+      -webkit-animation-delay: 0.1s;
+              animation-delay: 0.1s; }
+    .sk-cube5 {
+      -webkit-animation-delay: 0.2s;
+              animation-delay: 0.2s; }
+    .sk-cube6 {
+      -webkit-animation-delay: 0.3s;
+              animation-delay: 0.3s; }
+    .sk-cube7 {
+      -webkit-animation-delay: 0s;
+              animation-delay: 0s; }
+    .sk-cube8 {
+      -webkit-animation-delay: 0.1s;
+              animation-delay: 0.1s; }
+    .sk-cube9 {
+      -webkit-animation-delay: 0.2s;
+              animation-delay: 0.2s; }
+  }
+}
+
+@keyframes sk-cubeGridBackground {
+  0%, 100% {
+    background: white;
+  } 50% {
+    background: #349FF4;
+  } 
+}
+
+@-webkit-keyframes sk-cubeGridBackground {
+  0%, 100% {
+    background: white;
+  } 50% {
+    background: #349FF4;
+  } 
+}
+
+@-webkit-keyframes sk-cubeGridScaleDelay {
+  0%, 70%, 100% {
+    -webkit-transform: scale3D(1, 1, 1);
+            transform: scale3D(1, 1, 1);
+  } 35% {
+    -webkit-transform: scale3D(0, 0, 1);
+            transform: scale3D(0, 0, 1); 
+  }
+}
+
+@keyframes sk-cubeGridScaleDelay {
+  0%, 70%, 100% {
+    -webkit-transform: scale3D(1, 1, 1);
+            transform: scale3D(1, 1, 1);
+  } 35% {
+    -webkit-transform: scale3D(0, 0, 1);
+            transform: scale3D(0, 0, 1);
+  } 
 }

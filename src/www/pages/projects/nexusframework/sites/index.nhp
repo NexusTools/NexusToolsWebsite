@@ -1,0 +1,23 @@
+<h1>Site Gallery</h1>
+<p>Only a few sites right now run NexusFramework.</p>
+
+<br /><br />
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>NexusTools</h3>
+        <p>NexusTools is a project development community primarily producing OpenSource projects and technologies.</p>
+        <p><a href="/" class="btn btn-primary" role="button">View</a></p>
+      </div>
+    </div>
+  </div>  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <h3>GovOutlook</h3>
+        <p>GovOutlook is a goverment data analysis platform, offering tools such as visuals and query builders.</p>
+        <p><a href="https://govoutlook.com/" class="btn btn-primary" role="button">View</a></p>
+      </div>
+    </div>
+  </div>
+</div>

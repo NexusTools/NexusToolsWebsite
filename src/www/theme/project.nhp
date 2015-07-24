@@ -1,0 +1,29 @@
+<div class="col-lg-9 col-md-8">
+  <h1>{{title}}</h1>
+</div>
+
+<div class="col-lg-3 col-md-4 sidebar">
+  <?if HasReleases?>
+    <a href="https://github.com/{{RepoID}}/releases" class="btn btn-primary">Releases</a>
+  <?endif?>
+  <?if env.showZipSource?>
+    <a href="https://github.com/{{RepoID}}/archive/master.zip" class="btn btn-material-indigo">Zip Source</a>
+  <?endif?>
+  <a href="https://github.com/{{RepoID}}/commits/master" class="btn btn-info">{{pluralize(CommitCount, "Commit")}}</a>
+  <a href="https://github.com/{{RepoID}}/branches" class="btn btn-info">{{pluralize(BranchCount, "Branch")}}</a>
+  <a href="https://github.com/{{RepoID}}/issues" class="btn btn-info">{{pluralize(IssueCount, "Issue")}}</a>
+  
+  <br /><br />
+  <h5>HTTPS Clone URL</h5>
+  <input onclick="this.select()" class="form-control" value="https://github.com/{{RepoID}}.git" readonly />
+  <br /><br />
+  <a href="https://github.com/{{RepoID}}" class="btn btn-primary">View on GitHub</a>
+  
+  <?if env.sidebarextra?>
+    <?include env.sidebarextra?>
+  <?endif?>
+</div>
+
+<div class="col-lg-9 col-md-8 readme">
+  {{{README}}}
+</div>

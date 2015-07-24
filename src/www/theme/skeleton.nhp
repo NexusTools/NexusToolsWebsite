@@ -1,0 +1,186 @@
+<html>
+
+    <head>
+        <title>{{title}} - NexusTools</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="//img.nexustools.com/favicon.png" />
+
+        <link href="//css.nexustools.com/bootstrap.min.css" rel="stylesheet" />
+      
+        <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/roboto.min.css" rel="stylesheet" />
+        <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/material.min.css" rel="stylesheet" />
+        <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/css/ripples.min.css" rel="stylesheet" />
+
+        <link href="//css.nexustools.com/nexustools.min.css" rel="stylesheet" />
+
+        <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    </head>
+
+    <body>
+      <?if !query.notheme?>
+        <div class="overlay">
+          <div class="sk-cube-grid">
+            <div class="sk-cube sk-cube1"></div>
+            <div class="sk-cube sk-cube2"></div>
+            <div class="sk-cube sk-cube3"></div>
+            <div class="sk-cube sk-cube4"></div>
+            <div class="sk-cube sk-cube5"></div>
+            <div class="sk-cube sk-cube6"></div>
+            <div class="sk-cube sk-cube7"></div>
+            <div class="sk-cube sk-cube8"></div>
+            <div class="sk-cube sk-cube9"></div>
+          </div>
+        </div>
+
+          <nav class="navbar navbar-default">
+            <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">NexusTools</a>
+              </div>
+
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/projects/minecraft-mods">Minecraft Mods</a></li>
+                      <li><a href="/projects/nexusframework">NexusFramework</a></li>
+                      <li><a href="/projects/jvm.js">JVM.JS</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Members <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a target="_blank" href="https://www.linkedin.com/profile/view?id=435101334">Katelyn Slater</a></li>
+                      <li><a target="_blank" href="https://www.linkedin.com/profile/view?id=435616573">Ulric Esparra</a></li>
+                      <li><a target="_blank" href="https://www.linkedin.com/profile/view?id=276556550">Steve Hohner</a></li>
+                      <li><a target="_blank" href="https://github.com/aerospark">Luke Fay</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Servers <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/servers/minecraft">Minecraft</a></li>
+                    </ul>
+                  </li>
+                  <li class="visible-xs-block"><a popup href="/connect">Connect</a></li>
+                  <li class="visible-xs-block"><a href="/contact">Contact</a></li>
+                  <li><a href="/blog">Blog</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="visible-lg-block visible-md-block"><a title="Facebook" target="_blank" href="https://www.facebook.com/NexusTools">
+                    <span style="font-size: 20px;" class="fa fa-facebook-official"></span>
+                  </a></li>
+                  <li class="visible-lg-block visible-md-block"><a title="Twitter" target="_blank" href="https://twitter.com/NexusTools">
+                    <span style="font-size: 20px;" class="fa fa-twitter"></span>
+                  </a></li>
+                  <li class="visible-lg-block visible-md-block"><a title="Google+" target="_blank" href="https://plus.google.com/112703330255852466635">
+                    <span style="font-size: 20px;" class="fa fa-google-plus-square"></span>
+                  </a></li>
+                  <li class="visible-lg-block visible-md-block"><a title="YouTube" target="_blank" href="https://www.youtube.com/NexusTools">
+                    <span style="font-size: 20px;" class="fa fa-youtube"></span>
+                  </a></li>
+                  <li class="visible-lg-block visible-md-block"><a title="Steam" target="_blank" href="http://steamcommunity.com/groups/NexusTools">
+                    <span style="font-size: 20px;" class="fa fa-steam"></span>
+                  </a></li>
+                  <li class="visible-lg-block visible-md-block"><a title="GitHub" target="_blank" href="https://github.com/NexusTools">
+                    <span style="font-size: 20px;" class="fa fa-github"></span>
+                  </a></li>
+                  <li class="visible-sm-block"><a title="Connect" popup href="/connect">
+                    <span style="font-size: 20px;" class="fa fa-share-alt-square"></span>
+                  </a></li>
+                  <li class="hidden-xs"><a title="Contact" href="/contact">
+                    <span style="font-size: 20px;" class="fa fa-envelope"></span>
+                  </a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+
+          <div class="hidden-xs"><br /><br /></div>
+          <div class="page container">
+            <?include page?>
+          </div>
+        <?else?>
+          <div class="page">
+            <?include page?>
+          </div>
+        <?endif?>
+        
+
+        <?if !query.notheme?>
+          <br />
+          <div class="footer">
+            <div class="social">
+              <a href="https://www.facebook.com/NexusTools" title="Facebook" class="btn btn-material-indigo fa fa-facebook-official"></a>
+              <a href="https://twitter.com/NexusTools" title="Twitter" class="btn btn-info fa fa-twitter"></a>
+              <a href="https://plus.google.com/112703330255852466635" title="Google+" class="btn btn-danger fa fa-google-plus"></a>
+              <a href="https://www.youtube.com/NexusTools" title="YouTube" class="btn btn-material-grey fa fa-youtube"></a>
+              <a href="http://steamcommunity.com/groups/NexusTools" title="Steam" class="btn btn-primary fa fa-steam"></a>
+              <a href="https://github.com/NexusTools" title="GitHub" class="btn btn-material-green fa fa-github"></a>
+              <a href="/contact" title="Contact" class="btn btn-material-deep-purple fa fa-envelope"></a>
+            </div>
+            <div class="clearfix"></div>
+            <br /><br /><br />
+            
+            Website Developed by <a href="https://www.linkedin.com/profile/view?id=435101334">Katelyn Slater</a>
+            <div class="visible-xs-block"></div>
+            <span class="hidden-xs"> - </span>
+            Theme Based on <a href="https://fezvrasta.github.io/bootstrap-material-design">Bootstrap Material Design</a>
+            <div class="visible-xs-block"></div>
+            <span class="hidden-xs"> - </span>
+            <a href="https://github.com/NexusTools/NexusToolsWebsite">Get the Source</a>
+            <div class="visible-xs-block"></div>
+            <span class="hidden-xs"> - </span>
+            <a href="#/login" popup>Member Login</a>
+
+            <br />
+          </div>
+        <?endif?>
+
+        <!-- START MAIN LIBS -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+        <script src="//js.nexustools.com/lib/arrive.min.js"></script>
+      
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/ripples.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.3.0/js/material.min.js"></script>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.17.0/TweenLite.min.js"></script>
+      
+        <script>$(document).ready(function() {$.material.init();});</script>
+        <!-- END MAIN LIBS -->
+      
+        <!-- START JVM LIBS
+        <?each config.jvmlibs?>
+        <script src="//jvm.nexustools.com/jvm.js/{{entry}}"></script>
+        <?done?>
+        END JVM LIBS -->
+      
+        <!-- <script>new JVM().makeCurrent();</script> -->
+      
+        <!-- START PAGESYSTEM LIBS -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/async/1.4.0/async.min.js"></script>
+        <script src="//js.nexustools.com/nexustools/pagesys.js"></script>
+        <!-- END PAGESYSTEM LIBS -->
+      
+        <!-- START PAGESYSTEM CLASSES
+        <?each config.pagelibs?>
+        <script src="//jvm.nexustools.com/{{entry}}.js"></script>
+        <?done?>
+        END PAGESYSTEM CLASSES -->
+      
+        <?if env.controller?>
+          <script>PageSystem.startController({{JSON.stringify(controller)}})</script>
+        <?endif?>
+    </body>
+
+</html>

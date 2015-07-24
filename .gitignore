@@ -1,6 +1,8 @@
-/src/sources/NexusTools-Pages/nbproject/private/
-/src/sources/NexusTools-Pages/build/
-/src/sources/NexusTools-Pages/dist/
+/src/sources/jvm/nbproject/private/
+/src/sources/jvm/build/
+/src/sources/jvm/dist/
+/src/sources/jvm/lib/
+/auth
 
 .sass-cache
 log.txt
