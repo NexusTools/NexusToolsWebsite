@@ -12,8 +12,8 @@
         <h3>JVM.JS</h3>
         <p>JVM.JS is a Java to JavaScript compiler and runtime designed to be modular and simple.</p>
         <p>
-          <a href="/projects/jvm.js" class="btn btn-info" role="button">Info</a>
-          <a href="/projects/jvm.js/examples" class="btn btn-primary" role="button">Examples</a>
+          <a href="/projects/jvmjs" class="btn btn-info" role="button">Info</a>
+          <a href="/projects/jvmjs/examples" class="btn btn-primary" role="button">Examples</a>
         </p>
       </div>
     </div>

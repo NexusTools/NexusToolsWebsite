@@ -53,7 +53,7 @@
                     <ul class="dropdown-menu">
                       <li><a href="/projects/minecraft-mods">Minecraft Mods</a></li>
                       <li><a href="/projects/nexusframework">NexusFramework</a></li>
-                      <li><a href="/projects/jvm.js">JVM.JS</a></li>
+                      <li><a href="/projects/jvmjs">JVM.JS</a></li>
                     </ul>
                   </li>
                   <li class="dropdown">
