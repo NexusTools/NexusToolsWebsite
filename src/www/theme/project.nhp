@@ -3,8 +3,8 @@
 </div>
 
 <div class="col-lg-3 col-md-4 sidebar">
-  <?if HasReleases?>
-    <a href="https://github.com/{{RepoID}}/releases" class="btn btn-primary">Releases</a>
+  <?if ReleaseCount?>
+    <a href="https://github.com/{{RepoID}}/releases" class="btn btn-primary">{{pluralize(ReleaseCount, "Release")}}</a>
   <?endif?>
   <?if env.showZipSource?>
     <a href="https://github.com/{{RepoID}}/archive/master.zip" class="btn btn-material-indigo">Zip Source</a>

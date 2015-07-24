@@ -66,6 +66,18 @@ body {
         }
       } 
     }
+    
+    @for $i from 1 to 6 {
+      h#{$i} a {
+        color: #333;
+        
+        &:after {
+          content: " \f08e";
+          font-family: FontAwesome;
+          font-size: 70%;
+        }
+      }
+    }
 
     @include transition(transform ease 0.5s, opacity ease 0.5s);
     

@@ -18,8 +18,7 @@ APIURL += "api.github.com";
 module.exports = function(owner, repo) {
   var RepoID = owner + "/" + repo;
   var RAWURL = 'https://raw.githubusercontent.com/' + RepoID + '/master/';
-  var CommitCount = "?", BranchCount = "?", IssueCount = "?";
-  var HasReleases = false;
+  var CommitCount = "?", BranchCount = "?", IssueCount = "?", ReleaseCount = "?";
   var README = "";
   
   var renderer = new marked.Renderer();
@@ -46,10 +45,17 @@ module.exports = function(owner, repo) {
   var update;
   update = function() {
     request({
-      url: APIURL + '/repos/' + RepoID + '/releases/latest',
+      url: APIURL + '/repos/' + RepoID + '/releases',
       headers: headers
     }, function (error, response, body) {
-      HasReleases = !error && response.statusCode == 200;
+      if(!error && response.statusCode == 200) {
+        try {
+          ReleaseCount = eval(body).length;
+        } catch(e) {
+          process.domain.logger.warn(e);
+        }
+      } else
+        process.domain.logger.warn(error, response);
     });
     request({
       url: APIURL + '/repos/' + RepoID + '/branches',
@@ -112,9 +118,9 @@ module.exports = function(owner, repo) {
     next(null, {
       README: README,
       IssueCount: IssueCount,
+      ReleaseCount: ReleaseCount,
       BranchCount: BranchCount,
       CommitCount: CommitCount,
-      HasReleases: HasReleases,
       RepoID: RepoID
     });
   };
