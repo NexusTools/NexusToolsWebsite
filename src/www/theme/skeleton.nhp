@@ -18,7 +18,7 @@
     </head>
 
     <body>
-      <?if !query.notheme?>
+      <?if !("notheme" in query)?>
         <div class="overlay">
           <div class="sk-cube-grid">
             <div class="sk-cube sk-cube1"></div>
@@ -116,7 +116,7 @@
         <?endif?>
         
 
-        <?if !query.notheme?>
+        <?if !("notheme" in query)?>
           <br />
           <div class="footer">
             <div class="social">

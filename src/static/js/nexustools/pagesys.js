@@ -1,5 +1,6 @@
 (function($, global) {
   function PageSys() {
+    this.registeredElements = [];
   }
   PageSys.BASEURL = "//jvm.nexustools.com/";
   
@@ -50,6 +51,162 @@
     });
   }
   
+  PageSys.prototype.handleElements = function(target) {
+    this.registeredElements.forEach(function(reg) {
+      reg.handler(target.find(reg.selector));
+    });
+  };
+  
+  PageSys.prototype.registerElement = function(selector, setHandler) {
+    this.registeredElements.push({
+      selector: selector,
+      handler: setHandler
+    });
+    
+    setHandler($(selector));
+  }
+  
+  var hasUrl = /^#/;
+  var fullUrl = /^([^\:]+\:)?\/\/([^\/]+)(\/[^#]*)/;
+  var host = (""+location.href).match(fullUrl);
+  
+  var currentPage = host[3];
+  host = host[2];
+  console.log(host, currentPage);
+  
+  PageSys.prototype.init = function() {
+    if(!("pushState" in history))
+      return;
+    
+    if(history.state == null) {
+      console.log("Initializing state");
+      history.replaceState([pageElement.html(), document.title], document.title);
+    }
+    
+    var loadtimeout;
+    window.onpopstate = function(e) {
+      try{clearTimeout(loadtimeout)}catch(e){}
+      $("html, body").animate({ scrollTop: "0px" });
+      pageElement.addClass("loading");
+      document.title = e.state[1];
+      
+      loadtimeout = setTimeout(function() {
+        var oldHeight = pageElement.height();
+        pageElement.css({
+          "height": false
+        });
+        pageElement.empty();
+        
+        pageElement.html(e.state[0]);
+        self.handleElements(pageElement);
+        pageElement.removeClass("loading");
+        
+        if(false)
+          setTimeout(function() {
+            var newHeight = pageElement.height();
+            pageElement.css({
+              "height": oldHeight + "px"
+            });
+            pageElement.animate("height", newHeight + "px");
+          });
+      }, 500);
+    }
+    
+    var self = this;
+    this.registerElement("a", function(set) {
+      set.click(function(e) {
+        var href = $(e.target).attr("href");
+        if(!href)
+          return;
+
+        if(hasUrl.test(href))
+          return;
+
+        var match = href.match(fullUrl);
+        if(!match)
+          href = "//nexustools.com" + href;
+        else if(match[2] != host)
+          return; // External URL
+
+        match = href.match(fullUrl);
+
+        console.log(match, currentPage);
+        if(match[3] == currentPage) {
+          e.preventDefault();
+          return;
+        }
+        currentPage = match[3];
+
+        var has = href.indexOf("#");
+        if(has != -1)
+          has = href.substring(has);
+        else
+          has = "";
+        var pos = href.indexOf("?");
+        if(pos != -1)
+          href += "&notheme";
+        else
+          href += "?notheme";
+        href += has;
+        
+        $("html, body").animate({ scrollTop: "0px" });
+        pageElement.addClass("loading");
+        document.title = "Loading...";
+
+        var newDocument;
+        async.parallel([
+          function(cb) {
+            $.get(href).done(function(data) {
+              newDocument = $(data);
+              cb();
+            }).fail(function(err) {
+              cb(err);
+            });
+          },
+          function(cb) {
+            try{clearTimeout(loadtimeout)}catch(e){}
+            loadtimeout = setTimeout(cb, 500);
+          }
+        ], function(err) {
+          console.log(newDocument);
+          var oldHeight = pageElement.height();
+          pageElement.css({
+            "height": false
+          });
+          pageElement.empty();
+
+          var newPageElement, title;
+          newDocument.each(function(i, el) {
+            var tagName = el.tagName;
+            el = $(el);
+            if(el.hasClass("page") && tagName == "DIV")
+              newPageElement = el;
+            else if(tagName == "TITLE")
+              title = el.html();
+          });
+          var html = newPageElement.html();
+          history.pushState([html, title], title, currentPage);
+          document.title = title;
+
+          pageElement.html(html);
+          self.handleElements(pageElement);
+          pageElement.removeClass("loading");
+          
+          if(false)
+            setTimeout(function() {
+              var newHeight = pageElement.height();
+              pageElement.css({
+                "height": oldHeight + "px"
+              });
+              pageElement.animate("height", newHeight + "px");
+            });
+        });
+
+        e.preventDefault();
+      });
+    });
+  }
+  
   global.PageSystem = new PageSys();
-  console.log(global);
+  global.PageSystem.init();
 })(jQuery, this);

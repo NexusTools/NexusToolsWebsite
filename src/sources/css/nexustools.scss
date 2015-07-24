@@ -50,7 +50,6 @@ body {
   
   .page {
     background: white;
-    min-height: 400px;
     
     .row {
       padding: 0 $grid-gutter-width/2;
@@ -93,7 +92,9 @@ body {
 
     &.loading {
       pointer-events: none;
-      transform: perspective(600px) rotateX(20deg);
+      @media (min-width: $screen-sm-min) {
+        transform: perspective(600px) rotateX(20deg) scale(0.8);
+      }
       opacity: 0;
     }
     
@@ -112,6 +113,7 @@ body {
     }
 
     @media (min-width: $screen-sm-min) {
+      min-height: 400px;
       text-align: center;
       padding: $grid-gutter-width;
       box-shadow: 0 8px 17px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19);
