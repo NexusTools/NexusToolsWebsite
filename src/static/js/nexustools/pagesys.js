@@ -227,10 +227,10 @@
           var end = newDocument.lastIndexOf("</div>");
           var html = newDocument.substring(start, end);
           
-          global._gaq.push(['_trackPageview', currentPage]);
           history.pushState([html, title, currentPage], title, currentPage);
 
           updatePageContent(html);
+          global._gaq.push(['_trackPageview', currentPage]);
         });
 
         e.preventDefault();
