@@ -78,9 +78,29 @@
     if(!("pushState" in history))
       return;
     
+    var heightAni = {height: pageElement.height()};
+    var updateHeight = function() {
+      console.log("Animating", heightAni.height);
+      pageElement.css({
+        "height": heightAni.height + "px"
+      });
+    }
+    var completeHeight = function() {
+      pageElement.css({
+        "height": ""
+      });
+    }
+    
+    var updatePageContent = function(html) {
+      pageElement.empty();
+      pageElement.html(html);
+      self.handleElements(pageElement);
+      pageElement.removeClass("loading");
+    }
+    
     if(history.state == null) {
       console.log("Initializing state");
-      history.replaceState([pageElement.html(), document.title], document.title);
+      history.replaceState([pageElement.html(), document.title, currentPage], document.title);
     }
     
     var loadtimeout;
@@ -89,26 +109,10 @@
       $("html, body").animate({ scrollTop: "0px" });
       pageElement.addClass("loading");
       document.title = e.state[1];
+      currentPage = e.state[2];
       
       loadtimeout = setTimeout(function() {
-        var oldHeight = pageElement.height();
-        pageElement.css({
-          "height": false
-        });
-        pageElement.empty();
-        
-        pageElement.html(e.state[0]);
-        self.handleElements(pageElement);
-        pageElement.removeClass("loading");
-        
-        if(false)
-          setTimeout(function() {
-            var newHeight = pageElement.height();
-            pageElement.css({
-              "height": oldHeight + "px"
-            });
-            pageElement.animate("height", newHeight + "px");
-          });
+        updatePageContent(e.state[0]);
       }, 500);
     }
     
@@ -157,7 +161,7 @@
         async.parallel([
           function(cb) {
             $.get(href).done(function(data) {
-              newDocument = $(data);
+              newDocument = data;
               cb();
             }).fail(function(err) {
               cb(err);
@@ -168,14 +172,8 @@
             loadtimeout = setTimeout(cb, 500);
           }
         ], function(err) {
-          console.log(newDocument);
-          var oldHeight = pageElement.height();
-          pageElement.css({
-            "height": false
-          });
-          pageElement.empty();
 
-          var newPageElement, title;
+          /*var newPageElement, title;
           newDocument.each(function(i, el) {
             var tagName = el.tagName;
             el = $(el);
@@ -184,22 +182,17 @@
             else if(tagName == "TITLE")
               title = el.html();
           });
-          var html = newPageElement.html();
-          history.pushState([html, title], title, currentPage);
+          var html = newPageElement.html();*/
+          var title = newDocument.match(/<title>(.+)<\/title>/)[1];
+          var initial = newDocument.indexOf("<div");
+          var start = newDocument.indexOf(">", initial)+1;
+          var end = newDocument.lastIndexOf("</div>");
+          var html = newDocument.substring(start, end);
+          
+          history.pushState([html, title, currentPage], title, currentPage);
           document.title = title;
 
-          pageElement.html(html);
-          self.handleElements(pageElement);
-          pageElement.removeClass("loading");
-          
-          if(false)
-            setTimeout(function() {
-              var newHeight = pageElement.height();
-              pageElement.css({
-                "height": oldHeight + "px"
-              });
-              pageElement.animate("height", newHeight + "px");
-            });
+          updatePageContent(html);
         });
 
         e.preventDefault();
