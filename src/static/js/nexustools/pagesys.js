@@ -2,7 +2,9 @@
   function PageSys() {
     this.registeredElements = [];
   }
-  PageSys.BASEURL = "//jvm.nexustools.com/";
+  PageSys.JVMBASEURL = "//jvm.nexustools.com/";
+  PageSys.CONTROLLERPKG = "net/nexustools/website/pages/";
+  PageSys.ANIMATIONTIME = 200;
   
   PageSys.prototype.handleError = function(err, forElement) {
     console.error("Unrecoverable error occured", err);
@@ -10,14 +12,15 @@
   
   var loadedClasses = [];
   var jvm = global.$currentJVM;
-  var pageElement = $(".page");
-  PageSys.prototype.startController = function(controller, forElement) {
+  var pageElement = $("body > .page");
+  var overlayElement = $("body > .overlay");
+  PageSys.prototype.startJVMController = function(controller, forElement) {
     if(!forElement)
       forElement = pageElement;
     
     var self = this;
-    var controllerClass = "net/nexustools/website/pages/" + controller;
-    var controllerBase = PageSys.BASEURL + controllerClass;
+    var controllerClass = PageSys.CONTROLLERPKG + controller;
+    var controllerBase = PageSys.JVMBASEURL + controllerClass;
     jQuery.get(controllerBase + ".libs.json").done(function(data) {
       console.log("Loading dependencies", controller, data);
       
@@ -26,7 +29,7 @@
           return cb();
         loadedClasses.push(lib);
         
-        jQuery.get(PageSys.BASEURL + lib + ".js").done(function(data) {
+        jQuery.get(PageSys.JVMBASEURL + lib + ".js").done(function(data) {
           /*try {
             console.log("Processing dependency", lib);
             eval(data);
@@ -68,15 +71,39 @@
   
   var hasUrl = /^#/;
   var fullUrl = /^([^\:]+\:)?\/\/([^\/]+)(\/[^#]*)/;
-  var host = (""+location.href).match(fullUrl);
-  
-  var currentPage = host[3];
-  host = host[2];
-  console.log(host, currentPage);
+  var noProtocol = /^\/\//;
   
   PageSys.prototype.init = function() {
     if(!("pushState" in history))
       return;
+    
+    var host = (""+location.href).match(fullUrl);
+
+    var currentPage = host[3];
+    var hostProtocol = host[1];
+    var fullHost = host[1] + "//" + host[2];
+    host = host[2];
+    console.log(host, currentPage);
+
+    var loadedStyles = [];
+    var loadedScripts = [];
+
+    console.log("Full host", fullHost);
+    
+    var resolveUrl = function(href) {
+      if(!fullUrl.test(href))
+        href = fullHost + href;
+      else if(noProtocol.test(href))
+        href = hostProtocol + href;
+      return href;
+    }
+    $("link[rel=\"stylesheet\"]").each(function(i, link) {
+      loadedStyles.push(resolveUrl($(link).attr("href")));
+    });
+    $("script[src]").each(function(i, script) {
+      loadedScripts.push(resolveUrl($(script).attr("src")));
+    });
+    console.log("Loaded files", loadedStyles, loadedScripts);
     
     var heightAni = {height: pageElement.height()};
     var updateHeight = function() {
@@ -113,7 +140,7 @@
       
       loadtimeout = setTimeout(function() {
         updatePageContent(e.state[0]);
-      }, 500);
+      }, PageSys.ANIMATIONTIME);
     }
     
     var self = this;
@@ -128,7 +155,7 @@
 
         var match = href.match(fullUrl);
         if(!match)
-          href = "//nexustools.com" + href;
+          href = fullHost + href;
         else if(match[2] != host)
           return; // External URL
 
@@ -157,11 +184,13 @@
         pageElement.addClass("loading");
         document.title = "Loading...";
 
-        var newDocument;
+        var newDocument, title, overlaytimer;
         async.parallel([
           function(cb) {
             $.get(href).done(function(data) {
               newDocument = data;
+              title = newDocument.match(/<title>(.+)<\/title>/)[1];
+              document.title = title;
               cb();
             }).fail(function(err) {
               cb(err);
@@ -169,28 +198,26 @@
           },
           function(cb) {
             try{clearTimeout(loadtimeout)}catch(e){}
-            loadtimeout = setTimeout(cb, 500);
+            loadtimeout = setTimeout(function() {
+              try {clearTimeout(overlaytimer);}catch(e){}
+              overlayElement.addClass("ready");
+              overlayElement.addClass("open");
+              cb();
+            }, PageSys.ANIMATIONTIME);
+            
           }
         ], function(err) {
-
-          /*var newPageElement, title;
-          newDocument.each(function(i, el) {
-            var tagName = el.tagName;
-            el = $(el);
-            if(el.hasClass("page") && tagName == "DIV")
-              newPageElement = el;
-            else if(tagName == "TITLE")
-              title = el.html();
-          });
-          var html = newPageElement.html();*/
-          var title = newDocument.match(/<title>(.+)<\/title>/)[1];
+          overlayElement.removeClass("open");
+          overlaytimer = setTimeout(function() {
+            overlayElement.removeClass("ready");
+          }, 200);
+          
           var initial = newDocument.indexOf("<div");
           var start = newDocument.indexOf(">", initial)+1;
           var end = newDocument.lastIndexOf("</div>");
           var html = newDocument.substring(start, end);
           
           history.pushState([html, title, currentPage], title, currentPage);
-          document.title = title;
 
           updatePageContent(html);
         });
