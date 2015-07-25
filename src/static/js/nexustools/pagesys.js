@@ -73,6 +73,8 @@
   var fullUrl = /^([^\:]+\:)?\/\/([^\/]+)(\/[^#]*)/;
   var noProtocol = /^\/\//;
   
+  if(!("_gaq" in global))
+    global._gaq = [];
   PageSys.prototype.init = function() {
     if(!("pushState" in history))
       return;
@@ -225,6 +227,7 @@
           var end = newDocument.lastIndexOf("</div>");
           var html = newDocument.substring(start, end);
           
+          global._gaq.push(['_trackPageview', currentPage]);
           history.pushState([html, title, currentPage], title, currentPage);
 
           updatePageContent(html);
