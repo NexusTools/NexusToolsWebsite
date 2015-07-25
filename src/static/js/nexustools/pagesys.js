@@ -166,6 +166,7 @@
           e.preventDefault();
           return;
         }
+        var failHref = href;
         currentPage = match[3];
 
         var has = href.indexOf("#");
@@ -207,6 +208,13 @@
             
           }
         ], function(err) {
+          if(err) {
+            console.error(err);
+            console.log("Manually navigating to", failHref);
+            location.href = failHref;
+            return;
+          }
+          
           overlayElement.removeClass("open");
           overlaytimer = setTimeout(function() {
             overlayElement.removeClass("ready");
