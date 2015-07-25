@@ -93,7 +93,7 @@ body {
     &.loading {
       pointer-events: none;
       @media (min-width: $screen-sm-min) {
-        transform: perspective(600px) rotateX(20deg) scale(0.8);
+        transform: perspective(600px) rotateX(4deg) scale(0.95);
       }
       opacity: 0;
     }
