@@ -81,9 +81,6 @@ body {
     @include transition(transform ease 0.35s, opacity ease 0.35s);
     
     .readme {
-      h1 {
-        display: none;
-      }
       img {
         margin: 2px;
       }

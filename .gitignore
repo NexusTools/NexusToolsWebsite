@@ -9,5 +9,3 @@ log.txt
 node_modules
 npm*
 *~
-
-/src/sources/Tetris/nbproject/private/

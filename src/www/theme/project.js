@@ -1,5 +1,6 @@
 var request = require("request");
 var marked = require("marked");
+var async = require("async");
 var url = require("url");
 
 var HOUR = 1000 * 60 * 60;
@@ -42,7 +43,37 @@ module.exports = function(owner, repo) {
     'User-Agent': 'Mozilla/5.0 (Headless; rv:29.0) Gecko/20120101 Request/NodeJS'
   }
   
+  var readmeName = "README.md";
+  var downloadReadme = function(filename, attemptNext) {
+    request({
+      url: RAWURL + filename,
+      headers: headers
+    }, function (error, response, body) {
+      if(!error && response.statusCode == 200) {
+        try {
+          marked.setOptions(options);
+          README = marked(body);
+          
+          var startH = README.indexOf("<h");
+          if(startH != -1) {
+            var endH = README.indexOf("</h", startH);
+            if(startH > 0)
+              README = README.substring(0, startH) + README.substring(endH+5);
+            else
+              README = README.substring(endH+5);
+          }
+          
+          readmeName = filename;
+        } catch(e) {
+          process.domain.logger.warn(e);
+        }
+      } else
+        attemptNext();
+    });
+  }
+  
   var update;
+  var readmeVariants = ["README.md", "README.MD", "readme.md", "readme.MD"];
   update = function() {
     request({
       url: APIURL + '/repos/' + RepoID + '/releases',
@@ -96,20 +127,16 @@ module.exports = function(owner, repo) {
       } else
         process.domain.logger.warn(error, response);
     });
-    request({
-      url: RAWURL + 'README.md',
-      headers: headers
-    }, function (error, response, body) {
-      if(!error && response.statusCode == 200) {
-        try {
-          marked.setOptions(options);
-          README = marked(body);
-        } catch(e) {
-          process.domain.logger.warn(e);
-        }
-      } else
-        process.domain.logger.warn(error, response);
+    
+    var readmeToTry = [readmeName];
+    readmeVariants.forEach(function(readme) {
+      if(readmeToTry.indexOf(readme) == -1)
+        readmeToTry.push(readme);
     });
+    async.eachSeries(readmeToTry, function(readme, next) {
+      downloadReadme(readme, next);
+    });
+    
     setTimeout(update, HOUR + HOUR * Math.random());
   };
   setTimeout(update);
