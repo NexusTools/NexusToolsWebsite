@@ -4,7 +4,7 @@
   }
   PageSys.JVMBASEURL = "//jvm.nexustools.com/";
   PageSys.CONTROLLERPKG = "net/nexustools/website/pages/";
-  PageSys.ANIMATIONTIME = 200;
+  PageSys.ANIMATIONTIME = 350;
   
   PageSys.prototype.handleError = function(err, forElement) {
     console.error("Unrecoverable error occured", err);

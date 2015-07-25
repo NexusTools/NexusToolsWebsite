@@ -78,7 +78,7 @@ body {
       }
     }
 
-    @include transition(transform ease 0.2s, opacity ease 0.2s);
+    @include transition(transform ease 0.35s, opacity ease 0.35s);
     
     .readme {
       h1 {
@@ -136,7 +136,7 @@ body {
   top: 0px;
   
   
-  @include transition(opacity ease 0.2);
+  @include transition(opacity ease 0.2s);
   opacity: 0;
   
   &.ready {
