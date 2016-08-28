@@ -124,7 +124,7 @@ module.exports = function (owner, repo, branch) {
 				if (!error && response.statusCode == 200) {
 					try {
 						var commitData = JSON.parse(body);
-						if(!commitData)
+						if(!commitData.length)
 							CommitCount = commitCount;
 						else {
 							curPage ++;
