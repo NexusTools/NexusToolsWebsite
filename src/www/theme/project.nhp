@@ -5,8 +5,9 @@
 <div class="col-lg-3 col-md-4 sidebar">
   <?if ReleaseCount?>
 	<div class="form-group">
-		<select id="download" class="form-control" data-dropdownjs="true" style="display: none;">
-			<option disabled class="disabled">Download</option>
+		<label for="s1">Download latest release</label>
+		<select id="s1" onselect="if(!window.open(this.value)){location.href=value}" id="download" class="form-control">
+			<option disabled class="disabled" selected>Select a Download</option>
 			<?each ReleaseAssets?>
 				<option value="{{entry.value}}">{{entry.key}}</option>
 			<?done?>
