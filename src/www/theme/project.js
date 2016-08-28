@@ -87,8 +87,8 @@ module.exports = function (owner, repo, branch) {
 					if(ReleaseCount = ReleaseData.length) {
 						ReleaseAssets = {};
 						var Release = ReleaseData[0];
-						ZipReleaseURL = Release.zip_url;
-						TarGZReleaseURL = Release.tarball_url;
+						ZipReleaseURL = "https://github.com/" + RepoID + "/archive/" + Release.tag_name + ".zip";
+						TarGZReleaseURL = "https://github.com/" + RepoID + "/archive/" + Release.tag_name + ".tar.gz";
 						Release.assets.forEach(function(asset) {
 							ReleaseAssets[asset.name] = asset.browser_download_url;
 						});
