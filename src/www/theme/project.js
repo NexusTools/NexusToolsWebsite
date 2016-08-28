@@ -16,9 +16,10 @@ try {
 }
 APIURL += "api.github.com";
 
-module.exports = function(owner, repo) {
+module.exports = function(owner, repo, branch) {
+  branch = branch || "master";
   var RepoID = owner + "/" + repo;
-  var RAWURL = 'https://raw.githubusercontent.com/' + RepoID + '/master/';
+  var RAWURL = 'https://raw.githubusercontent.com/' + RepoID + '/' + branch + '/';
   var CommitCount = "?", BranchCount = "?", IssueCount = "?", ReleaseCount = "?";
   var README = "";
   
@@ -26,7 +27,7 @@ module.exports = function(owner, repo) {
   var link = renderer.link.bind(renderer);
   renderer.link = function(href, title, text) {
     return link(url.resolve(RAWURL, href), title, text);
-  }
+  };
   
   var options = {
     renderer: renderer,
@@ -41,7 +42,7 @@ module.exports = function(owner, repo) {
   
   var headers = {
     'User-Agent': 'Mozilla/5.0 (Headless; rv:29.0) Gecko/20120101 Request/NodeJS'
-  }
+  };
   
   var readmeName = "README.md";
   var downloadReadme = function(filename, attemptNext) {
@@ -81,7 +82,7 @@ module.exports = function(owner, repo) {
     }, function (error, response, body) {
       if(!error && response.statusCode == 200) {
         try {
-          ReleaseCount = eval(body).length;
+          ReleaseCount = JSON.parse(body).length;
         } catch(e) {
           process.domain.logger.warn(e);
         }
@@ -94,7 +95,7 @@ module.exports = function(owner, repo) {
     }, function (error, response, body) {
       if(!error && response.statusCode == 200) {
         try {
-          BranchCount = eval(body).length;
+          BranchCount = JSON.parse(body).length;
         } catch(e) {
           process.domain.logger.warn(e);
         }
@@ -107,7 +108,7 @@ module.exports = function(owner, repo) {
     }, function (error, response, body) {
       if(!error && response.statusCode == 200) {
         try {
-          IssueCount = eval(body).length;
+          IssueCount = JSON.parse(body).length;
         } catch(e) {
           process.domain.logger.warn(e);
         }
@@ -115,12 +116,12 @@ module.exports = function(owner, repo) {
         process.domain.logger.warn(error, response);
     });
     request({
-      url: APIURL + '/repos/' + RepoID + '/commits',
+      url: APIURL + '/repos/' + RepoID + '/commits?sha=' + branch,
       headers: headers
     }, function (error, response, body) {
       if(!error && response.statusCode == 200) {
         try {
-          CommitCount = eval(body).length;
+          CommitCount = JSON.parse(body).length;
         } catch(e) {
           process.domain.logger.warn(e);
         }
@@ -151,4 +152,4 @@ module.exports = function(owner, repo) {
       RepoID: RepoID
     });
   };
-}
+};
