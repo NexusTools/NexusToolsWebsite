@@ -116,7 +116,7 @@ module.exports = function(owner, repo, branch) {
         process.domain.logger.warn(error, response);
     });
     request({
-      url: APIURL + '/repos/' + RepoID + '/commits?sha=' + branch,
+      url: APIURL + '/repos/' + RepoID + '/commits/' + branch,
       headers: headers
     }, function (error, response, body) {
       if(!error && response.statusCode == 200) {
@@ -145,6 +145,7 @@ module.exports = function(owner, repo, branch) {
   return function(req, res, next) {
     next(null, {
       README: README,
+	  Branch: branch,
       IssueCount: IssueCount,
       ReleaseCount: ReleaseCount,
       BranchCount: BranchCount,
