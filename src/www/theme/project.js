@@ -19,6 +19,7 @@ APIURL += "api.github.com";
 module.exports = function (owner, repo, branch) {
 	branch = branch || "master";
 	var RepoID = owner + "/" + repo;
+	var ZipReleaseURL = false, TarGZReleaseURL = false, ReleaseAssets;
 	var RAWURL = 'https://raw.githubusercontent.com/' + RepoID + '/' + branch + '/';
 	var CommitCount = "?", BranchCount = "?", IssueCount = "?", ReleaseCount = "?";
 	var README = "";
@@ -82,7 +83,20 @@ module.exports = function (owner, repo, branch) {
 		}, function (error, response, body) {
 			if (!error && response.statusCode == 200) {
 				try {
-					ReleaseCount = JSON.parse(body).length;
+					var ReleaseData = JSON.parse(body);
+					if(ReleaseCount = ReleaseData.length) {
+						ReleaseAssets = {};
+						var Release = ReleaseData[0];
+						ZipReleaseURL = Release.zip_url;
+						TarGZReleaseURL = Release.tarball_url;
+						Release.assets.forEach(function(asset) {
+							ReleaseAssets[asset.name] = asset.browser_download_url;
+						});
+					} else {
+						ReleaseAssets = false;
+						TarGZReleaseURL = false;
+						ZipReleaseURL = false;
+					}
 				} catch (e) {
 					process.domain.logger.warn(e);
 				}
@@ -158,6 +172,9 @@ module.exports = function (owner, repo, branch) {
 			README: README,
 			Branch: branch,
 			IssueCount: IssueCount,
+			ZipReleaseURL: ZipReleaseURL,
+			TarGZReleaseURL: TarGZReleaseURL,
+			ReleaseAssets: ReleaseAssets,
 			ReleaseCount: ReleaseCount,
 			BranchCount: BranchCount,
 			CommitCount: CommitCount,
