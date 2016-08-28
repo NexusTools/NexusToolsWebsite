@@ -116,7 +116,7 @@ module.exports = function(owner, repo, branch) {
         process.domain.logger.warn(error, response);
     });
     request({
-      url: APIURL + '/repos/' + RepoID + '/commits/' + branch,
+      url: APIURL + '/repos/' + RepoID + '/commits?sha=' + branch,
       headers: headers
     }, function (error, response, body) {
       if(!error && response.statusCode == 200) {
