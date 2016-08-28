@@ -4,14 +4,16 @@
 
 <div class="col-lg-3 col-md-4 sidebar">
   <?if ReleaseCount?>
-	<select id="download" class="form-control" data-dropdownjs="true" style="display: none;">
-		<option disabled class="disabled">Download</option>
-		<?each ReleaseAssets?>
-			<option value="{{entry}}">{{key}}</option>
-		<?done?>
-		<option value="{{ZipReleaseURL}}" class="selected">Source Code in Zip</option>
-		<option value="{{TarGZReleaseURL}}">Source Code in Tar.GZ</option>
-	</select>
+	<div class="form-group">
+		<select id="download" class="form-control" data-dropdownjs="true" style="display: none;">
+			<option disabled class="disabled">Download</option>
+			<?each ReleaseAssets?>
+				<option value="{{entry.value}}">{{entry.key}}</option>
+			<?done?>
+			<option value="{{ZipReleaseURL}}" class="selected">Source Code in Zip</option>
+			<option value="{{TarGZReleaseURL}}">Source Code in Tar.GZ</option>
+		</select>
+	</div>
     <a target="_blank" href="https://github.com/{{RepoID}}/releases" class="btn btn-primary">{{pluralize(ReleaseCount, "Release")}}</a>
   <?endif?>
   <?if env.showZipSource?>
