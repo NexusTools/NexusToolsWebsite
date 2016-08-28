@@ -6,6 +6,15 @@
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
       <div class="caption">
+        <h3>FML:FE</h3>
+        <p>Modified version of Forge Mod Loader that makes patching classes at runtime very easy.</p>
+        <p><a href="/projects/minecraft-mods/fml:fe" class="btn btn-primary" role="button">View</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
         <h3>SkyTech</h3>
         <p>Adds a new world type that generates floating blobs in the sky, similar to skyblocks but with far more resources available.</p>
         <p><a href="/projects/minecraft-mods/sky-tech" class="btn btn-primary" role="button">View</a></p>

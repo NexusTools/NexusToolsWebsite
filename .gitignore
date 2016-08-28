@@ -1,11 +1,13 @@
-/src/sources/jvm/nbproject/private/
-/src/sources/jvm/build/
-/src/sources/jvm/dist/
-/src/sources/jvm/lib/
-/auth
+src/sources/jvm/nbproject/private/
+src/sources/jvm/build/
+src/sources/jvm/dist/
+src/sources/jvm/lib/
+src/static/uc
+auth
 
 .sass-cache
 log.txt
 node_modules
 npm*
 *~
+/nbproject/private/

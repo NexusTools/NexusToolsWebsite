@@ -22,7 +22,7 @@
     <div class="thumbnail">
       <div class="caption">
         <h3>NexusFramework</h3>
-        <p>NexusFramework is a versatile and modular page system for NodeJS and PHP.</p>
+        <p>NexusFramework is a versatile and modular page system for NodeJS and NHP.</p>
         <p>
           <a href="/projects/nexusframework" class="btn btn-info" role="button">Info</a>
           <a href="/projects/nexusframework/sites" class="btn btn-primary" role="button">Sites</a>

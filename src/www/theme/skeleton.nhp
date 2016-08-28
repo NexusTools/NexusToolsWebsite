@@ -169,7 +169,7 @@
       
         <!-- START PAGESYSTEM LIBS -->
         <script src="//cdnjs.cloudflare.com/ajax/libs/async/1.4.0/async.min.js"></script>
-        <script src="//js.nexustools.com/nexustools/pagesys.js"></script>
+        <!-- <script src="//js.nexustools.com/nexustools/pagesys.js"></script> -->
         <!-- END PAGESYSTEM LIBS -->
       
         <!-- START PAGESYSTEM CLASSES
