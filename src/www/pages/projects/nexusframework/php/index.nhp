@@ -1,1 +1,1 @@
-<?include "project"?>
+<?template "theme/project"?>

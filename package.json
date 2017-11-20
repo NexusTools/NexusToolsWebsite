@@ -1,59 +1,80 @@
 {
-	"name": "nexustools",
-	"version": "1.0.0",
-	"homepage": "https://nexustools.com/",
-	"hosts": {
-				"fonts.nexustools.com": [
-          {
-            "handler": "crossorigin"
-          },
-          "src/static/fonts"
-				],
+    "name": "nexustools",
+    "version": "1.0.0",
+    "homepage": "https://nexustools.com/",
+    "hosts": {
+        "fonts.nexustools.com": [
+            {
+                "handler": "crossorigin"
+            },
+            "src/static/fonts"
+        ],
         "img.nexustools.com": [
-          "src/static/img"
+            "src/static/img"
         ],
         "css.nexustools.com": [
-          "src/static/css"
+            {
+                "handler": "crossorigin"
+            },
+            "src/static/css"
         ],
         "jvm.nexustools.com": [
-          {
-            "handler": "crossorigin"
-          },
-          "src/static/jvm"
+            {
+                "handler": "crossorigin"
+            },
+            "src/static/jvm"
         ],
         "js.nexustools.com": [
-          "src/static/js"
+            {
+                "handler": "crossorigin"
+            },
+            "src/static/js"
         ],
         "nexustools.com": [
-          {
-            "handler": "config",
-            "base": "src/static/config"
-          },
-          {
-            "handler": "utils"
-          },
-          {
-            "handler": "nexusframework",
-            "skeleton": "theme/skeleton",
-            "errordoc": {
-                "404": "errdoc/404",
-                "403": "errdoc/403"
+            {
+                "handler": "config",
+                "base": "src/static/config"
             },
-            "root": "src/www",
-            "pages": "pages"
-          }
-        ]
+            {
+                "handler": "nexusframework",
+                "skeleton": "theme/skeleton",
+                "pagesysskeleton": "theme/pagesysskeleton.js",
+                "errordoc": {
+                    "*": "errdoc"
+                },
+                "root": "src/www",
+                "pages": "pages"
+            }
+        ],
+        "*": {
+            "handler": "redirect",
+            "to": "https://nexustools.com/"
+        }
     },
-	"dependencies": {
-		"async": "latest",
-		"lodash": "latest",
-    "marked": "~0.3.3",
-		"netgate": "~0.3.6",
-    "request": "~2.60.0",
-		"nexusframework": "~0.1.8",
-    "chokidar": "~1.0.5"
-	},
-	"bundleDependencies": [],
-	"main": "server.js",
-	"private": true
+    "dependencies": {
+        "async": "^2.6.0",
+        "lodash": "^4.17.4",
+        "marked": "^0.3.6",
+        "nexusfork": "^0.5.3",
+        "nexusframework": "0.3.0-beta.14",
+        "nulllogger": "^0.5.2",
+        "passport": "^0.4.0",
+        "passport-google-oauth2": "^0.1.6",
+        "request": "^2.83.0",
+        "source-map-support": "^0.5.0"
+    },
+    "main": "server.js",
+    "private": true,
+    "devDependencies": {
+        "@types/async": "^2.0.45",
+        "@types/chokidar": "^1.7.3",
+        "@types/express": "^4.0.39",
+        "@types/jquery": "^3.2.16",
+        "@types/lodash": "^4.14.85",
+        "@types/marked": "^0.3.0",
+        "@types/passport": "^0.4.1"
+    },
+    "scripts": {
+        "start": "node server.js"
+    }
 }

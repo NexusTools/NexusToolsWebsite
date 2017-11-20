@@ -1,0 +1,79 @@
+.btn {
+  margin: 10px 2px; }
+
+div.footer {
+  margin-top: 24px;
+  margin-bottom: 12px;
+  padding: 0 6px;
+  font-size: 0.8em; }
+  div.footer > div {
+    height: 2px; }
+  @media (min-width: 500px) {
+    div.footer {
+      text-align: center;
+      opacity: 0.6; }
+      div.footer .social {
+        transform: scale(0.8);
+        margin-bottom: 0px; } }
+  div.footer .social {
+    margin-bottom: 12px; }
+    div.footer .social .btn {
+      font-size: 16px;
+      padding: 6px; }
+
+@media (max-width: 999px) {
+  body > nav .container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 10px !important; } }
+
+@media (max-width: 500px) {
+  body {
+    background: white; } }
+@media (max-width: 999px) {
+  body {
+    width: 100%; } }
+body .page {
+  background: white;
+  transition: transform ease 0.35s, opacity ease 0.35s;
+  -o-transition: transform ease 0.35s, opacity ease 0.35s;
+  -ms-transition: transform ease 0.35s, opacity ease 0.35s;
+  -moz-transition: transform ease 0.35s, opacity ease 0.35s;
+  -webkit-transition: transform ease 0.35s, opacity ease 0.35s;
+  padding: 12px; }
+  body .page .row {
+    padding: 0 6px; }
+  body .page .readme {
+    text-align: left; }
+    body .page .readme img {
+      margin: 2px; }
+  body .page.loading {
+    pointer-events: none;
+    opacity: 0; }
+    @media (min-width: 500px) {
+      body .page.loading {
+        transform: perspective(600px) rotateX(4deg) scale(0.95); } }
+  body .page .sidebar {
+    text-align: left;
+    margin-bottom: 20px; }
+    @media (min-width: 1000px) {
+      body .page .sidebar {
+        float: right;
+        margin-top: 50px; }
+        body .page .sidebar .btn {
+          width: 100%;
+          margin-top: 0px;
+          text-align: left; } }
+  @media (min-width: 1000px) {
+    body .page {
+      margin-top: 120px;
+      min-height: 400px;
+      text-align: center;
+      box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); } }
+  @media (max-width: 999px) {
+    body .page {
+      width: 100%;
+      max-width: 100% !important;
+      padding-top: 70px; } }
+
+/*# sourceMappingURL=nexustools.css.map */
