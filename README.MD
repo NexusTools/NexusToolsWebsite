@@ -2,7 +2,7 @@ NexusTools Website
 ------------------
 This repository contains the source code used to generate [https://nexustools.com](nexustools.com)
 
-For information and inquiries feel free to contact us at [email:admin@nexustools.com](admin@nexustools.com)
+For information and inquiries feel free to contact us at [admin@nexustools.com](email:admin@nexustools.com)
 
 
 Bootstrap Material Design
