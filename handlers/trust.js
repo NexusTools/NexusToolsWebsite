@@ -1,4 +1,3 @@
-
-module.exports = function(app, config, logger, next) {
+module.exports = function(app) {
     app.enable("trust proxy");
 };

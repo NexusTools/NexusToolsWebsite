@@ -6,7 +6,7 @@ const _export: nexusframework.PageSystemSkeleton = function(template: string, op
             next(err);
         else
             next(undefined, {
-                title: (options.title || "Title Missing") + " - NexusTools",
+                title: options.title,
                 loader: res.getLoaderData(),
                 page: html
             });

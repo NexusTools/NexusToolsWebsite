@@ -99,6 +99,7 @@
     window.NexusFramework.initPageSystem({
         noprogress: true,
         prerequest(path: string) {
+            document.title = "Loading - NexusTools";
             fadeOutPage();
             hideMenu();
             skip = true;
@@ -111,7 +112,6 @@
             else
                 hideMenu();
             fadeOutPage(function() {
-                document.title = data.title;
                 page.innerHTML = data.page;
                 window.NexusFramework.createComponents(page);
                 window.NexusFrameworkLoader.load(data.loader, function(err?) {
@@ -121,6 +121,7 @@
                     } else
                         fadeInPage();
                 });
+                document.title = data.title ? (data.title + " - NexusTools") : "";
             })
             return true;
         }

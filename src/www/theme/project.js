@@ -4,6 +4,7 @@
 exports.__esModule = true;
 var request = require("request");
 var marked = require("marked");
+var striptags = require("striptags");
 var async = require("async");
 var url = require("url");
 var HOUR = 1000 * 60 * 60;
@@ -25,7 +26,7 @@ module.exports = function (owner, repo, branch, logger) {
     var ZipReleaseURL, TarGZReleaseURL, ReleaseAssets;
     var RAWURL = 'https://raw.githubusercontent.com/' + RepoID + '/' + branch + '/';
     var CommitCount = "?", BranchCount = "?", IssueCount = "?", ReleaseCount = "?";
-    var README = "";
+    var README, description;
     var renderer = new marked.Renderer();
     var link = renderer.link.bind(renderer);
     renderer.link = function (href, title, text) {
@@ -62,6 +63,9 @@ module.exports = function (owner, repo, branch, logger) {
                         else
                             README = README.substring(endH + 5);
                     }
+                    description = striptags(README, [], "").replace(/(\n|\s+)/g, " ").trim().substring(0, 161);
+                    if (description.length > 160)
+                        description = description.substring(0, 160) + "...";
                     readmeName = filename;
                 }
                 catch (e) {
@@ -187,7 +191,10 @@ module.exports = function (owner, repo, branch, logger) {
                     ReleaseCount: ReleaseCount,
                     BranchCount: BranchCount,
                     CommitCount: CommitCount,
-                    RepoID: RepoID
+                    RepoID: RepoID,
+                    meta: {
+                        description: description
+                    }
                 });
             else
                 setTimeout(tryAgain, 500);

@@ -5,7 +5,7 @@ var _export = function (template, options, req, res, next) {
             next(err);
         else
             next(undefined, {
-                title: (options.title || "Title Missing") + " - NexusTools",
+                title: options.title,
                 loader: res.getLoaderData(),
                 page: html
             });

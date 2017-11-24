@@ -1,8 +1,9 @@
 /// <reference types="nulllogger" />
 /// <reference types="node" />
 
-var request = require("request");
+import request = require("request");
 import marked = require("marked");
+import striptags = require("striptags");
 import async = require("async");
 import url = require("url");
 
@@ -25,7 +26,7 @@ module.exports = function (owner: string, repo: string, branch: string, logger: 
     var ZipReleaseURL, TarGZReleaseURL, ReleaseAssets;
     var RAWURL = 'https://raw.githubusercontent.com/' + RepoID + '/' + branch + '/';
     var CommitCount: string | number = "?", BranchCount = "?", IssueCount = "?", ReleaseCount = "?";
-    var README = "";
+    var README: string, description: string;
 
     var renderer = new marked.Renderer();
     var link = renderer.link.bind(renderer);
@@ -68,6 +69,9 @@ module.exports = function (owner: string, repo: string, branch: string, logger: 
                             README = README.substring(endH + 5);
                     }
 
+                    description = striptags(README, [], "").replace(/(\n|\s+)/g, " ").trim().substring(0, 161);
+                    if (description.length > 160)
+                        description = description.substring(0, 160) + "...";
                     readmeName = filename;
                 } catch (e) {
                     logger.warn(e);
@@ -186,7 +190,11 @@ module.exports = function (owner: string, repo: string, branch: string, logger: 
                     ReleaseCount: ReleaseCount,
                     BranchCount: BranchCount,
                     CommitCount: CommitCount,
-                    RepoID: RepoID
+                    RepoID: RepoID,
+                    
+                    meta: {
+                        description
+                    }
                 });
             else
                 setTimeout(tryAgain, 500);

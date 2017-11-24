@@ -1,6 +1,12 @@
 <html>
     <head>
-        <title>{{title}} - NexusTools</title>
+        <title>
+            <?if typeof title === "undefined"?>
+                NexusTools
+            <?else?>
+                {{title}} - NexusTools
+            <?endif?>
+        </title>
         <?header?>
     </head>
     <body>

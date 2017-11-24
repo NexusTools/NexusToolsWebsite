@@ -1,3 +1,6 @@
 {
-    "title": "Welcome"
+    "meta": {
+        "siteName": "NexusTools",
+        "description": "Check out our software, everything's OpenSource even this website!"
+    }
 }

@@ -1,9 +1,5 @@
-<h1>Welcome to NexusTools</h1>
-<p>NexusTools is a project development community primarily producing OpenSource projects and technologies.</p>
-<p class="tight">We've been producing opensource software for years, check out our <a href="https://github.com/NexusTools">github repos</a> to see some of our work!</p>
-
-
-<br /><br />
+<h1>NexusTools</h1>
+<br />
 <div class="row projects">
   <div class="col-md-6 col-lg-4" style="margin-bottom: 12px">
     <div class="card">
