@@ -121,7 +121,7 @@
                     } else
                         fadeInPage();
                 });
-                document.title = data.title ? (data.title + " - NexusTools") : "";
+                document.title = data.title ? (data.title + " - NexusTools") : "NexusTools";
             })
             return true;
         }
