@@ -9,7 +9,7 @@ export = function(req: nexusframework.Request, res: nexusframework.Response, nex
     res.addScript("//code.jquery.com/jquery-3.2.1.slim.min.js", "3.2.1");
     res.addScript("//unpkg.com/popper.js@1.12.6/dist/umd/popper.min.js", "4.0.2", "jquery");
     res.addScript("//unpkg.com/bootstrap-material-design@4.0.0-beta.4/dist/js/bootstrap-material-design.min.js", "4.0.2", "jquery", "popper");
-    res.addScript("//js.nexustools.com/script.js", ver, "nexusframework", "bootstrap-material-design");
+    res.addScript("//js.nexustools.com/script.js?v=" + ver, ver, "nexusframework", "bootstrap-material-design");
     
     res.addGoogleFont("Roboto", 300);
     res.addGoogleFont("Roboto", 400);
@@ -19,7 +19,7 @@ export = function(req: nexusframework.Request, res: nexusframework.Response, nex
     res.addStyle("//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css", "4.3.0");
     
     res.addStyle("//unpkg.com/bootstrap-material-design@4.0.0-beta.4/dist/css/bootstrap-material-design.min.css", "4.0.2");
-    res.addStyle("//css.nexustools.com/nexustools.css", ver, "bootstrap-material-design");
+    res.addStyle("//css.nexustools.com/nexustools.css?v=" + ver, ver, "bootstrap-material-design");
     
     res.addHeaderRenderer(function(out) {
         out.write('<meta name="viewport" content="width=device-width, initial-scale=1" />');
