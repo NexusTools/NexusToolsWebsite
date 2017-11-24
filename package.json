@@ -40,6 +40,7 @@
                 "handler": "nexusframework",
                 "skeleton": "theme/skeleton",
                 "pagesysskeleton": "theme/pagesysskeleton.js",
+                "iconfile": "../static/img/logo@2x.png",
                 "errordoc": {
                     "*": "errdoc"
                 },

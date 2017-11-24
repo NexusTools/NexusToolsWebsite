@@ -3,6 +3,8 @@ import { nexusframework } from "nexusframework/types";
 const ver = "1.0";
 
 export = function(req: nexusframework.Request, res: nexusframework.Response, next: (err?: Error, routedpath?: string) => void) {
+    delete res.locals.title;
+    
     res.addNexusFrameworkClient();
     res.addScript("//code.jquery.com/jquery-3.2.1.slim.min.js", "3.2.1");
     res.addScript("//unpkg.com/popper.js@1.12.6/dist/umd/popper.min.js", "4.0.2", "jquery");

@@ -1,6 +1,7 @@
 "use strict";
 var ver = "1.0";
 module.exports = function (req, res, next) {
+    delete res.locals.title;
     res.addNexusFrameworkClient();
     res.addScript("//code.jquery.com/jquery-3.2.1.slim.min.js", "3.2.1");
     res.addScript("//unpkg.com/popper.js@1.12.6/dist/umd/popper.min.js", "4.0.2", "jquery");
