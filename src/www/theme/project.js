@@ -72,8 +72,10 @@ module.exports = function (owner, repo, branch, logger) {
                     logger.warn(e);
                 }
             }
-            else
+            else {
+                logger.warn(error, response);
                 attemptNext();
+            }
         });
     };
     var update;

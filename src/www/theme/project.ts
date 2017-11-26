@@ -76,8 +76,10 @@ module.exports = function (owner: string, repo: string, branch: string, logger: 
                 } catch (e) {
                     logger.warn(e);
                 }
-            } else
+            } else {
+                logger.warn(error, response);
                 attemptNext();
+            }
         });
     }
 
