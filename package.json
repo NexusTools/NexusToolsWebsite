@@ -31,7 +31,9 @@
             "src/static/js"
         ],
         "nexustools.com": [
-            "trust",
+            {
+                "handler": "util"
+            },
             {
                 "handler": "config",
                 "base": "src/static/config"
@@ -43,6 +45,63 @@
                 "iconfile": "../static/img/logo@2x.png",
                 "errordoc": {
                     "*": "errdoc"
+                },
+                "scripts": [
+                    {
+                        "source": "nexusframeworkclient"
+                    },
+                    {
+                        "source": "//code.jquery.com/jquery-3.2.1.slim.min.js"
+                    },
+                    {
+                        "source": "//unpkg.com/popper.js@1.12.6/dist/umd/popper.min.js",
+                        "dependencies": ["jquery"]
+                    },
+                    {
+                        "source": "//unpkg.com/bootstrap-material-design@4.0.0-beta.4/dist/js/bootstrap-material-design.min.js",
+                        "dependencies": ["popper"]
+                    },
+                    {
+                        "source": "//js.nexustools.com/script.js?v=1.0.0",
+                        "dependencies": ["bootstrap-material-design"]
+                    }
+                ],
+                "styles": [
+                    {
+                        "source": "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+                    },
+                    {
+                        "source": "//unpkg.com/bootstrap-material-design@4.0.0-beta.4/dist/css/bootstrap-material-design.min.css"
+                    },
+                    {
+                        "source": "//css.nexustools.com/nexustools.css?v=1.0.0",
+                        "dependencies": ["bootstrap-material-design"]
+                    },
+                    {
+                        "source": "//js.nexustools.com/script.js?v=1.0.0",
+                        "dependencies": ["bootstrap-material-design"]
+                    }
+                ],
+                "fonts": [
+                    "Roboto",
+                    {
+                        "name": "Roboto",
+                        "weight": 300
+                    },
+                    {
+                        "name": "Roboto",
+                        "weight": 500
+                    },
+                    {
+                        "name": "Roboto",
+                        "weight": 700
+                    }
+                ],
+                "locals": {
+                    "meta": {
+                        "viewport": "width=device-width, initial-scale=1"
+                    },
+                    "progressContainerHead": "<div class=\"loader-progress-heading\"><img style=\"max-width: 100%\" src=\"/:icon/310.png\" /></div>"
                 },
                 "root": "src/www",
                 "pages": "pages"
@@ -58,7 +117,7 @@
         "lodash": "^4.17.4",
         "marked": "^0.3.6",
         "nexusfork": "^0.5.3",
-        "nexusframework": "0.3.0-beta.20",
+        "nexusframework": "0.3.0-beta.22",
         "nhp": "^0.8.10",
         "nulllogger": "^0.5.2",
         "passport": "^0.4.0",

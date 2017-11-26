@@ -1,6 +1,6 @@
 "use strict";
 var ver = "1.1";
-module.exports = function (req, res, next) {
+var _export = function (req, res, next) {
     delete res.locals.title;
     res.addNexusFrameworkClient();
     res.addScript("//code.jquery.com/jquery-3.2.1.slim.min.js", "3.2.1");
@@ -16,7 +16,6 @@ module.exports = function (req, res, next) {
     res.addStyle("//css.nexustools.com/nexustools.css?v=" + ver, ver, "bootstrap-material-design");
     res.addHeaderRenderer(function (out) {
         out.write('<meta name="viewport" content="width=device-width, initial-scale=1" />');
-        out.write('<link rel="icon" type="image/png" href="//img.nexustools.com/favicon.png" />');
     });
     res['locals'].pluralize = req['pluralize'] = function (count, text, suffix) {
         if (count == 1)
@@ -26,4 +25,5 @@ module.exports = function (req, res, next) {
     res.locals.progressContainerHead = '<div class="loader-progress-heading">NexusTools<br /><small>Loading Please Wait</small></div>';
     next();
 };
-//# sourceMappingURL=__route.js.map
+module.exports = _export;
+//# sourceMappingURL=skeleton.js.map

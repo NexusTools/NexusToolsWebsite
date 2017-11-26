@@ -2,7 +2,7 @@ import { nexusframework } from "nexusframework/types";
 
 const ver = "1.1";
 
-export = function(req: nexusframework.Request, res: nexusframework.Response, next: (err?: Error, routedpath?: string) => void) {
+const _export: nexusframework.RequestHandler = function(req, res, next) {
     delete res.locals.title;
     
     res.addNexusFrameworkClient();
@@ -23,7 +23,6 @@ export = function(req: nexusframework.Request, res: nexusframework.Response, nex
     
     res.addHeaderRenderer(function(out) {
         out.write('<meta name="viewport" content="width=device-width, initial-scale=1" />');
-        out.write('<link rel="icon" type="image/png" href="//img.nexustools.com/favicon.png" />');
     });
     
     res['locals'].pluralize = req['pluralize'] = function(count: number, text: string, suffix?: string) {
@@ -35,3 +34,4 @@ export = function(req: nexusframework.Request, res: nexusframework.Response, nex
     res.locals.progressContainerHead = '<div class="loader-progress-heading">NexusTools<br /><small>Loading Please Wait</small></div>';
     next();
 }
+export = _export;
