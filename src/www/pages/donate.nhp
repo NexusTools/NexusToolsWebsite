@@ -1,0 +1,23 @@
+<div class="row py-2">
+  <div class="col-md-4 py-2">
+    <h4>Bitcoin</h4>
+    <div style="max-width: 250px; text-align: center; margin: 0 auto">
+      <img class="img-fluid" src="//img.nexustools.com/bitcoin-qr.jpg" /><br />
+      <a target="_blank" href="https://blockchain.info/address/1KCMtJi8PSjQY22giPUK5tsT9rnSrsiiui" class="btn btn-outline-primary">View on blockchain.info</a>
+    </div>
+  </div>
+  <div class="col-md-4 py-2">
+    <h4>Dogecoin</h4>
+    <div style="max-width: 250px; text-align: center; margin: 0 auto">
+      <img class="img-fluid" src="//img.nexustools.com/dogecoin-qr.jpg" /><br />
+      <a target="_blank" href="https://dogechain.info/address/D5qqQQNBfZvyHdBvRJu7Gc2rpqy72JcWr2" class="btn btn-outline-primary">View on dogechain.info</a>
+    </div>
+  </div>
+  <div class="col-md-4 py-2">
+    <h4>Ethereum</h4>
+    <div style="max-width: 250px; text-align: center; margin: 0 auto">
+      <img class="img-fluid" src="//img.nexustools.com/ethereum-qr.jpg" /><br />
+      <a target="_blank" href="https://etherscan.io/address/0x50d7adDED182119cF825D6cC4E278158219Ef69f" class="btn btn-outline-primary">View on etherscan.io</a>
+    </div>
+  </div>
+</div>

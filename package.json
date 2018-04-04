@@ -63,7 +63,7 @@
                     },
                     {
                         "source": "//js.nexustools.com/script.js?v=1.0.0",
-                        "dependencies": ["bootstrap-material-design"]
+                        "dependencies": ["bootstrap-material-design", "nexusframeworkclient"]
                     }
                 ],
                 "styles": [
@@ -114,17 +114,17 @@
     },
     "dependencies": {
         "async": "^2.6.0",
-        "lodash": "^4.17.4",
-        "marked": "^0.3.6",
+        "lodash": "^4.17.5",
+        "marked": "^0.3.19",
         "nexusfork": "^0.5.3",
-        "nexusframework": "0.3.0-beta.22",
+        "nexusframework": "^0.3.0-beta.61",
         "nhp": "^0.8.10",
-        "nulllogger": "^0.5.2",
+        "nulllogger": "^0.6.0",
         "passport": "^0.4.0",
         "passport-google-oauth2": "^0.1.6",
-        "request": "^2.83.0",
         "source-map-support": "^0.5.0",
-        "striptags": "^3.1.0"
+        "request": "^2.85.0",
+        "striptags": "^3.1.1"
     },
     "main": "server.js",
     "private": true,

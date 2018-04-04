@@ -8,15 +8,25 @@
       <div class="card-body">
         <h4 class="card-title">NexusTools</h4>
         <p class="card-text">NexusTools is a project development community primarily producing OpenSource projects and technologies.</p>
-        <center><a href="/" class="btn btn-primary" role="button">View</a></center>
+        <center><a href="/" class="btn btn-outline-primary" role="button">View</a></center>
       </div>
     </div>
-  </div>  <div class="col-md-6 col-lg-4" style="margin-bottom: 12px">
+  </div>
+  <div class="col-md-6 col-lg-4" style="margin-bottom: 12px">
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">CiX Analytics</h4>
         <p class="card-text">CiX Analytics is a goverment data analysis platform, offering tools such as visuals and query builders.</p>
-        <center><a href="https://cixanalytics.com/" class="btn btn-primary" role="button">View</a></center>
+        <center><a href="https://cixanalytics.com/" class="btn btn-outline-primary" role="button">View</a></center>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-4" style="margin-bottom: 12px">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Project Fuel</h4>
+        <p class="card-text">A PayPal based funding system similar to KickStarter, that integrates directly into your store or website.</p>
+        <center><a href="https://project-fuel.com/" class="btn btn-outline-primary" role="button">View</a></center>
       </div>
     </div>
   </div>
