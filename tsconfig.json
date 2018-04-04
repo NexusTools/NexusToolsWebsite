@@ -6,10 +6,12 @@
         "sourceMap": true
     },
     "files": [
-        "server.ts"
+      "compileScripts.ts",
+      "server.ts"
     ],
     "include": [
-        "src/**/*.ts"
+      "src/www/*.ts",
+      "src/www/**/*.ts"
     ],
     "exclude": [
         "node_modules",

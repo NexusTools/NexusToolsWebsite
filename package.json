@@ -62,7 +62,7 @@
                         "dependencies": ["popper"]
                     },
                     {
-                        "source": "//js.nexustools.com/script.js?v=1.0.0",
+                        "source": "//js.nexustools.com/{{type}}/script.min.js?v=1.0.0",
                         "dependencies": ["bootstrap-material-design", "nexusframeworkclient"]
                     }
                 ],
@@ -75,10 +75,6 @@
                     },
                     {
                         "source": "//css.nexustools.com/nexustools.css?v=1.0.0",
-                        "dependencies": ["bootstrap-material-design"]
-                    },
-                    {
-                        "source": "//js.nexustools.com/script.js?v=1.0.0",
                         "dependencies": ["bootstrap-material-design"]
                     }
                 ],
@@ -135,9 +131,14 @@
         "@types/jquery": "^3.2.16",
         "@types/lodash": "^4.14.85",
         "@types/marked": "^0.3.0",
-        "@types/passport": "^0.4.1"
+        "@types/passport": "^0.4.1",
+        "@types/socket.io-client": "^1.4.32",
+        "typescript": "^2.8.1",
+        "uglify-es": "^3.3.10",
+        "uglify-js": "^3.3.18"
     },
     "scripts": {
-        "start": "node server.js"
+        "start": "node server.js",
+        "compile-scripts": "node compileScripts.js"
     }
 }

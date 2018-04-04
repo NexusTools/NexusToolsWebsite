@@ -39,7 +39,7 @@
           <main class="page container">
             <?include page?>
           </main>
-        
+
 
           <br />
           <div class="footer">
@@ -54,15 +54,17 @@
             </div>
             <div class="clearfix"></div>
             <br /><br /><br />
-            
+
             Website Developed by <a href="https://www.linkedin.com/in/katelyn-slater">Katelyn Slater</a>
-             - 
+             -
             Theme Based on <a href="https://fezvrasta.github.io/bootstrap-material-design">Bootstrap Material Design</a>
-             - 
+             -
             <a href="https://github.com/NexusTools/NexusToolsWebsite">Get the Source</a>
-             - 
-            <a href="/login/" data-toggle="modal" data-target="#loginModal">Member Login</a>
-             - 
+             -
+            <a href="/login/">Member Login</a>
+             -
+            <a href="/donate">Donate</a>
+             -
             <a href="/:about">About Framework</a>
 
             <br />

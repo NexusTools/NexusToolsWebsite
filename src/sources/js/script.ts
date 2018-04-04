@@ -1,23 +1,25 @@
 /// <reference types="nexusframework/scripts/index" />
-(function () {
+
+(function(nfc) {
     var pageVisible = true;
-    var pageFadeCallbacks;
-    var page = document.body.querySelectorAll(".page")[0];
-    var addAnimationEnd = function (el, handler) {
-        el.addEventListener("transitionend", handler);
-        el.addEventListener("transitionEnd", handler);
-        el.addEventListener("webkitTransitionEnd", handler);
-        el.addEventListener("mozTransitionEnd", handler);
-        el.addEventListener("oTransitionEnd", handler);
-    };
-    var removeAnimationEnd = function (el, handler) {
-        el.removeEventListener("transitionend", handler);
-        el.removeEventListener("transitionEnd", handler);
-        el.removeEventListener("webkitTransitionEnd", handler);
-        el.removeEventListener("mozTransitionEnd", handler);
-        el.removeEventListener("oTransitionEnd", handler);
-    };
-    var fadeInPage = function (cb) {
+    var pageFadeCallbacks: Function[];
+    const page = document.body.querySelectorAll(".page")[0] as HTMLElement;
+
+    const addAnimationEnd = function(el: Element, handler: Function) {
+        el.addEventListener("transitionend", handler as any);
+        el.addEventListener("transitionEnd", handler as any);
+        el.addEventListener("webkitTransitionEnd", handler as any);
+        el.addEventListener("mozTransitionEnd", handler as any);
+        el.addEventListener("oTransitionEnd", handler as any);
+    }
+    const removeAnimationEnd = function(el: Element, handler: Function) {
+        el.removeEventListener("transitionend", handler as any);
+        el.removeEventListener("transitionEnd", handler as any);
+        el.removeEventListener("webkitTransitionEnd", handler as any);
+        el.removeEventListener("mozTransitionEnd", handler as any);
+        el.removeEventListener("oTransitionEnd", handler as any);
+    }
+    const fadeInPage = function(cb?: () => void) {
         if (pageVisible) {
             if (cb)
                 cb();
@@ -32,29 +34,29 @@
         pageFadeCallbacks = [];
         if (cb)
             pageFadeCallbacks.push(cb);
-        var onAnimationEnd = function () {
+        const onAnimationEnd = () => {
             console.log("fadeIn onAnimationEnd");
+
             pageVisible = true;
-            try {
-                clearTimeout(timer);
-            }
-            catch (e) { }
+            try {clearTimeout(timer);}catch(e) {}
             removeAnimationEnd(page, onAnimationEnd);
-            var callbacks = pageFadeCallbacks;
+            const callbacks = pageFadeCallbacks;
             pageFadeCallbacks = undefined;
-            setTimeout(function () {
-                callbacks.forEach(function (cb) {
+            setTimeout(function() {
+                callbacks.forEach(function(cb) {
                     cb();
                 });
-            });
+            })
+
         };
         addAnimationEnd(page, onAnimationEnd);
         timer = setTimeout(onAnimationEnd, 500);
-        page.className = page.className.replace(/(^|\s)loading(\s|$)/g, function (match) {
+        page.className = page.className.replace(/(^|\s)loading(\s|$)/g, function(match) {
             return /^\s.+\s$/.test(match) ? " " : "";
         });
-    };
-    var fadeOutPage = function (cb) {
+    }
+
+    const fadeOutPage = function(cb?: () => void) {
         if (!pageVisible) {
             if (cb)
                 cb();
@@ -69,61 +71,59 @@
         pageFadeCallbacks = [];
         if (cb)
             pageFadeCallbacks.push(cb);
-        var onAnimationEnd = function () {
+        const onAnimationEnd = () => {
             console.log("fadeOut onAnimationEnd");
+
             pageVisible = false;
-            try {
-                clearTimeout(timer);
-            }
-            catch (e) { }
+            try {clearTimeout(timer);}catch(e) {}
             removeAnimationEnd(page, onAnimationEnd);
-            var callbacks = pageFadeCallbacks;
+            const callbacks = pageFadeCallbacks;
             pageFadeCallbacks = undefined;
-            setTimeout(function () {
-                callbacks.forEach(function (cb) {
+            setTimeout(function() {
+                callbacks.forEach(function(cb) {
                     cb();
                 });
-            });
+            })
         };
         addAnimationEnd(page, onAnimationEnd);
         timer = setTimeout(onAnimationEnd, 500);
         if (!/(^|\s)loading(\s|$)/.test(page.className))
             page.className = (page.className + " loading").trim();
-    };
-    var hideMenu = function () {
+    }
+
+    const hideMenu = function() {
         $(".dropdown-menu.show, .dropdown.show, .collapse.show").removeClass("show");
     };
-    var skip;
-    window.NexusFramework.initPageSystem({
+
+    var skip: boolean;
+    nfc.initPageSystem({
         noprogress: true,
-        prerequest: function (path) {
+        prerequest(path: string) {
             document.title = "Loading - NexusTools";
             fadeOutPage();
             hideMenu();
             skip = true;
             return true;
         },
-        handler: function (res) {
-            var data = res.contentFromJSON;
+        handler(res: NexusFrameworkTransportResponse) {
+            const data = res.contentFromJSON;
             if (skip)
                 skip = false;
             else
                 hideMenu();
-            fadeOutPage(function () {
+            fadeOutPage(function() {
                 page.innerHTML = data.page;
-                window.NexusFramework.createComponents(page);
-                window.NexusFrameworkLoader.load(data.loader, function (err) {
+                nfc.createComponents(page);
+                window.NexusFrameworkLoader.load(data.loader, function(err?) {
                     if (err) {
                         console.warn(err);
                         location.reload(true);
-                    }
-                    else
+                    } else
                         fadeInPage();
                 });
                 document.title = data.title ? (data.title + " - NexusTools") : "NexusTools";
-            });
+            })
             return true;
         }
     });
-})();
-//# sourceMappingURL=script.js.map
+})(window.NexusFrameworkClient);
