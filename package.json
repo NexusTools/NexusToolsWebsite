@@ -62,7 +62,7 @@
                         "dependencies": ["popper"]
                     },
                     {
-                        "source": "//js.nexustools.com/{{type}}/script.min.js?v=1.0.0",
+                        "source": "//js.nexustools.com/{{type}}/script.min.js?v={{main_version}}",
                         "dependencies": ["bootstrap-material-design", "nexusframeworkclient"]
                     }
                 ],
