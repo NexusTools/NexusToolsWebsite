@@ -1,1 +1,5 @@
-module.exports = require(__dirname + "/../../../../theme/project.js")("NexusTools", "NexusFrameworkJS");
+const handler = require(__dirname + "/../../../../theme/project.js");;
+
+module.exports = function(req, res, next) {
+  handler("NexusFramework", "NexusFramework", next, next);
+}

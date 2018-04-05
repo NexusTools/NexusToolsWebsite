@@ -7,7 +7,7 @@
           <div class="card-body">
             <h4 class="card-title">NodeJS Version</h4>
             <center>
-              <a href="/projects/nexusframework/nodejs" class="btn btn-info" role="button">View</a>
+              <a href="/projects/nexusframework/nodejs" class="btn btn-outline-info" role="button">View</a>
             </center>
           </div>
       </div>
@@ -17,7 +17,7 @@
           <div class="card-body">
             <h4 class="card-title">PHP Version</h4>
             <center>
-              <a href="/projects/nexusframework/php" class="btn btn-info" role="button">View</a>
+              <a href="/projects/nexusframework/php" class="btn btn-outline-info" role="button">View</a>
             </center>
           </div>
       </div>
@@ -27,7 +27,7 @@
           <div class="card-body">
             <h4 class="card-title">Site Gallery</h4>
             <center>
-              <a href="/projects/nexusframework/sites" class="btn btn-info" role="button">View</a>
+              <a href="/projects/nexusframework/sites" class="btn btn-outline-info" role="button">View</a>
             </center>
           </div>
       </div>

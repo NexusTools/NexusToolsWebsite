@@ -21,15 +21,16 @@
     <a target="_blank" href="https://github.com/{{RepoID}}/archive/{{Branch}}.zip" class="btn btn-material-indigo">Zip Source</a>
   <?endif?>
   <a target="_blank" href="https://github.com/{{RepoID}}/commits/{{Branch}}" class="btn btn-info">{{pluralize(CommitCount, "Commit")}}</a>
+  <a target="_blank" href="https://github.com/{{RepoID}}/contributors" class="btn btn-info">By {{pluralize(ContributorCount, "Contributor")}}</a>
   <a target="_blank" href="https://github.com/{{RepoID}}/branches" class="btn btn-info">{{pluralize(BranchCount, "Branch")}}</a>
   <a target="_blank" href="https://github.com/{{RepoID}}/issues" class="btn btn-info">{{pluralize(IssueCount, "Issue")}}</a>
-  
+
   <br /><br />
   <h5>HTTPS Clone URL</h5>
   <input onclick="this.select()" class="form-control" value="https://github.com/{{RepoID}}.git" readonly />
   <br /><br />
-  <a target="_blank" href="https://github.com/{{RepoID}}/tree/{{Branch}}" class="btn btn-primary">View on GitHub</a>
-  
+  <a target="_blank" href="https://github.com/{{RepoID}}/tree/{{Branch}}" class="btn btn-outline-primary" style="width: auto">View on GitHub</a>
+
   <?if env.sidebarextra?>
     <?include env.sidebarextra?>
   <?endif?>

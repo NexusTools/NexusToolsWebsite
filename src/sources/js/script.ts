@@ -5,20 +5,7 @@
     var pageFadeCallbacks: Function[];
     const page = document.body.querySelectorAll(".page")[0] as HTMLElement;
 
-    const addAnimationEnd = function(el: Element, handler: Function) {
-        el.addEventListener("transitionend", handler as any);
-        el.addEventListener("transitionEnd", handler as any);
-        el.addEventListener("webkitTransitionEnd", handler as any);
-        el.addEventListener("mozTransitionEnd", handler as any);
-        el.addEventListener("oTransitionEnd", handler as any);
-    }
-    const removeAnimationEnd = function(el: Element, handler: Function) {
-        el.removeEventListener("transitionend", handler as any);
-        el.removeEventListener("transitionEnd", handler as any);
-        el.removeEventListener("webkitTransitionEnd", handler as any);
-        el.removeEventListener("mozTransitionEnd", handler as any);
-        el.removeEventListener("oTransitionEnd", handler as any);
-    }
+    var timer;
     const fadeInPage = function(cb?: () => void) {
         if (pageVisible) {
             if (cb)
@@ -30,27 +17,23 @@
                 pageFadeCallbacks.push(cb);
             return;
         }
-        var timer;
         pageFadeCallbacks = [];
         if (cb)
             pageFadeCallbacks.push(cb);
-        const onAnimationEnd = () => {
-            console.log("fadeIn onAnimationEnd");
+        try {clearTimeout(timer);}catch(e) {}
+        timer = setTimeout(() => {
+            console.trace("fadeIn onAnimationEnd");
 
             pageVisible = true;
             try {clearTimeout(timer);}catch(e) {}
-            removeAnimationEnd(page, onAnimationEnd);
             const callbacks = pageFadeCallbacks;
             pageFadeCallbacks = undefined;
             setTimeout(function() {
                 callbacks.forEach(function(cb) {
                     cb();
                 });
-            })
-
-        };
-        addAnimationEnd(page, onAnimationEnd);
-        timer = setTimeout(onAnimationEnd, 500);
+            });
+        }, 350);
         page.className = page.className.replace(/(^|\s)loading(\s|$)/g, function(match) {
             return /^\s.+\s$/.test(match) ? " " : "";
         });
@@ -67,16 +50,15 @@
                 pageFadeCallbacks.push(cb);
             return;
         }
-        var timer;
         pageFadeCallbacks = [];
         if (cb)
             pageFadeCallbacks.push(cb);
-        const onAnimationEnd = () => {
-            console.log("fadeOut onAnimationEnd");
+        try {clearTimeout(timer);}catch(e) {}
+        timer = setTimeout(() => {
+            console.trace("fadeOut onAnimationEnd");
 
             pageVisible = false;
             try {clearTimeout(timer);}catch(e) {}
-            removeAnimationEnd(page, onAnimationEnd);
             const callbacks = pageFadeCallbacks;
             pageFadeCallbacks = undefined;
             setTimeout(function() {
@@ -84,9 +66,7 @@
                     cb();
                 });
             })
-        };
-        addAnimationEnd(page, onAnimationEnd);
-        timer = setTimeout(onAnimationEnd, 500);
+        }, 350);
         if (!/(^|\s)loading(\s|$)/.test(page.className))
             page.className = (page.className + " loading").trim();
     }
@@ -111,6 +91,7 @@
                 skip = false;
             else
                 hideMenu();
+            document.title = data.title ? (data.title + " - NexusTools") : "NexusTools";
             fadeOutPage(function() {
                 page.innerHTML = data.page;
                 nfc.createComponents(page);
@@ -121,7 +102,6 @@
                     } else
                         fadeInPage();
                 });
-                document.title = data.title ? (data.title + " - NexusTools") : "NexusTools";
             })
             return true;
         }
