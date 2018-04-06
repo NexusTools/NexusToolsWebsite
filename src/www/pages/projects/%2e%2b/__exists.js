@@ -5,7 +5,7 @@ module.exports = function (req, res, exists, skip) {
         skip();
         return;
     }
-    if (req.match[0] == "nexusframework" || req.match[0] == "njs")
+    if (req.match[0] == "nexusframework" || req.match[0] == "jvm.js")
         skip();
     else
         project("NexusTools", req.match[0], function (err, data) {

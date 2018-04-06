@@ -23,7 +23,7 @@
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" data-nopagesys="true" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Projects</a>
                       <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/projects/jvmjs/">JVM.JS</a>
+                        <a class="dropdown-item" href="/projects/jvm.js/">JVM.JS</a>
                         <a class="dropdown-item" href="/projects/nexusframework/">NexusFramework</a>
                         <a class="dropdown-item" href="/projects/njs/">NJS</a>
                       </div>
