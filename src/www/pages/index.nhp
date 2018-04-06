@@ -8,8 +8,7 @@
         <h4 class="card-title">JVM.JS</h4>
         <p>JVM.JS is a Java to JavaScript compiler and runtime designed to be modular and simple.</p>
         <center>
-          <a href="/projects/jvmjs" class="btn btn-outline-info" role="button">Info</a>
-          <a href="/projects/jvmjs/examples" class="btn btn-outline-primary" role="button">Examples</a>
+          <a href="/projects/jvm.js/" class="btn btn-outline-info" role="button">Info</a>
         </center>
       </div>
     </div>
@@ -20,8 +19,8 @@
         <h4 class="card-title">NexusFramework</h4>
         <p>NexusFramework is a versatile and modular page system for NodeJS and NHP.</p>
         <center>
-          <a href="/projects/nexusframework" class="btn btn-outline-info" role="button">Info</a>
-          <a href="/projects/nexusframework/sites" class="btn btn-outline-primary" role="button">Sites</a>
+          <a href="/projects/nexusframework/" class="btn btn-outline-info" role="button">Info</a>
+          <a href="/projects/nexusframework/sites/" class="btn btn-outline-primary" role="button">Sites</a>
         </center>
       </div>
     </div>
@@ -32,7 +31,7 @@
         <h4 class="card-title">NJS</h4>
         <p>NexusTools JavaScript, Transpile JavaScript to Java with partial ES6 support!</p>
         <center>
-          <a href="/projects/njs" class="btn btn-outline-info" role="button">Info</a>
+          <a href="/projects/njs/" class="btn btn-outline-info" role="button">Info</a>
         </center>
       </div>
     </div>
