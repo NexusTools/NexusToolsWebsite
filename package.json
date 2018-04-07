@@ -62,7 +62,7 @@
                         "dependencies": ["popper"]
                     },
                     {
-                        "source": "//js.nexustools.com/{{type}}/script.min.js?v={{main_version}}",
+                        "source": "//js.nexustools.com/{{type}}/script.min.js?v={{version_main}}",
                         "dependencies": ["bootstrap-material-design", "nexusframeworkclient"]
                     }
                 ],
@@ -74,7 +74,7 @@
                         "source": "//unpkg.com/bootstrap-material-design@4.0.0-beta.4/dist/css/bootstrap-material-design.min.css"
                     },
                     {
-                        "source": "//css.nexustools.com/nexustools.css?v={{main_version}}",
+                        "source": "//css.nexustools.com/nexustools.css?v={{version_main}}",
                         "dependencies": ["bootstrap-material-design"]
                     }
                 ],
@@ -113,7 +113,7 @@
         "lodash": "^4.17.5",
         "marked": "^0.3.19",
         "nexusfork": "^0.5.3",
-        "nexusframework": "^0.3.0-beta.61",
+        "nexusframework": "^0.3.0-beta.62",
         "lru-weak-cache": "^0.3.2",
         "nhp": "^0.8.10",
         "nulllogger": "^0.6.0",
