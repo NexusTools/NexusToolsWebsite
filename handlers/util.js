@@ -6,6 +6,7 @@ module.exports = function(app) {
                 return count + " " + text;
             return count + " " + text + (suffix = suffix || "s");
         };
+        res['locals'].squery = req.query.q;
         next();
     }
 };

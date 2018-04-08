@@ -1,5 +1,5 @@
 "use strict";
-module.exports = function (req, res, next) {
+var _export = function (req, res, next) {
     switch (res.locals.errorCode) {
         case 500:
             next(undefined, {
@@ -26,4 +26,5 @@ module.exports = function (req, res, next) {
             });
     }
 };
+module.exports = _export;
 //# sourceMappingURL=errdoc.js.map

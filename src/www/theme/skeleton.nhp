@@ -11,17 +11,17 @@
     </head>
     <body>
         <?afterbody?>
-          <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+          <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" id="navbar">
             <div class="container">
                 <a class="navbar-brand" href="/">NexusTools</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <div class="collapse navbar-collapse navbar-material-blue">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" data-nopagesys="true" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Projects</a>
+                      <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Projects</a>
                       <div class="dropdown-menu">
                         <a class="dropdown-item" href="/projects/jvm.js/">JVM.JS</a>
                         <a class="dropdown-item" href="/projects/nexusframework/">NexusFramework</a>
@@ -32,6 +32,10 @@
                       <a class="nav-link" href="/blog/">Blog</a>
                     </li>
                   </ul>
+                  <!-- <form class="form-inline my-2 my-lg-0" method="get" action="/search">
+                    <span class="bmd-form-group"><input value="{{squery}}" name="q" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></span>
+                    <button class="btn btn-raised btn-primary my-2 my-sm-0" type="submit">Search</button>
+                  </form> -->
                 </div>
               </div>
           </nav>
@@ -61,7 +65,11 @@
              -
             <a href="https://github.com/NexusTools/NexusToolsWebsite">Get the Source</a>
              -
-            <a href="/login/">Member Login</a>
+            <?if user?>
+              {{user.displayName}} (<a href="/logout">Logout</a>)
+            <?else?>
+              <a href="/login">Member Login</a>
+            <?endif?>
              -
             <a href="/donate">Donate</a>
              -

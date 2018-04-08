@@ -1,8 +1,11 @@
 "use strict";
 var _export = function (template, options, req, res, next) {
+    req.logger.warn("Rendering skeleton for page system...");
     res.render(template, options, function (err, html) {
-        if (err)
+        if (err) {
+            req.logger.error(err);
             next(err);
+        }
         else
             next(undefined, {
                 title: options.title,

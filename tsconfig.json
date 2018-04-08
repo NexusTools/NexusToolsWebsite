@@ -10,6 +10,8 @@
       "server.ts"
     ],
     "include": [
+      "handlers/*.ts",
+      "modules/*.ts",
       "src/www/*.ts",
       "src/www/**/*.ts"
     ],

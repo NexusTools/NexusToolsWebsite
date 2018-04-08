@@ -1,6 +1,6 @@
 {
     "name": "nexustools",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "homepage": "https://nexustools.com/",
     "hosts": {
         "fonts.nexustools.com": [
@@ -35,14 +35,14 @@
                 "handler": "util"
             },
             {
-                "handler": "config",
-                "base": "src/static/config"
-            },
-            {
                 "handler": "nexusframework",
                 "skeleton": "theme/skeleton",
-                "pagesysskeleton": "theme/pagesysskeleton.js",
+                "pagesysskeleton": "theme/pagesysskeleton",
                 "iconfile": "../static/img/logo@2x.png",
+                "modules": [
+                    "./modules/user"
+                ],
+                "noio": true,
                 "errordoc": {
                     "*": "errdoc"
                 },
@@ -55,15 +55,22 @@
                     },
                     {
                         "source": "//unpkg.com/popper.js@1.12.6/dist/umd/popper.min.js",
-                        "dependencies": ["jquery"]
+                        "dependencies": [
+                            "jquery"
+                        ]
                     },
                     {
-                        "source": "//unpkg.com/bootstrap-material-design@4.0.0-beta.4/dist/js/bootstrap-material-design.min.js",
-                        "dependencies": ["popper"]
+                        "source": "//unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.min.js",
+                        "dependencies": [
+                            "popper"
+                        ]
                     },
                     {
                         "source": "//js.nexustools.com/{{type}}/script.min.js?v={{version_main}}",
-                        "dependencies": ["bootstrap-material-design", "nexusframeworkclient"]
+                        "dependencies": [
+                            "bootstrap-material-design",
+                            "nexusframeworkclient"
+                        ]
                     }
                 ],
                 "styles": [
@@ -71,11 +78,13 @@
                         "source": "//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
                     },
                     {
-                        "source": "//unpkg.com/bootstrap-material-design@4.0.0-beta.4/dist/css/bootstrap-material-design.min.css"
+                        "source": "//unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
                     },
                     {
                         "source": "//css.nexustools.com/nexustools.css?v={{version_main}}",
-                        "dependencies": ["bootstrap-material-design"]
+                        "dependencies": [
+                            "bootstrap-material-design"
+                        ]
                     }
                 ],
                 "fonts": [
@@ -113,15 +122,17 @@
         "lodash": "^4.17.5",
         "marked": "^0.3.19",
         "nexusfork": "^0.5.3",
-        "nexusframework": "^0.3.0-beta.62",
+        "nexusframework": "^0.3.0-beta.67",
         "lru-weak-cache": "^0.3.2",
-        "nhp": "^0.8.10",
-        "nulllogger": "^0.6.0",
-        "passport": "^0.4.0",
-        "passport-google-oauth2": "^0.1.6",
+        "express-session": "^1.15.6",
+        "connect-mongodb-session": "^2.0.2",
+        "passport-google-oauth20": "^1.0.0",
         "source-map-support": "^0.5.0",
         "request": "^2.85.0",
-        "striptags": "^3.1.1"
+        "striptags": "^3.1.1",
+        "nulllogger": "^0.6.0",
+        "passport": "^0.4.0",
+        "nhp": "^0.9.0-beta.9"
     },
     "main": "server.js",
     "private": true,
@@ -136,8 +147,8 @@
         "@types/socket.io-client": "^1.4.32",
         "@types/request": "^2.47.0",
         "typescript": "^2.8.1",
-        "uglify-es": "^3.3.10",
-        "uglify-js": "^3.3.18"
+        "uglify-es": "^3.3.8",
+        "uglify-js": "^3.3.8"
     },
     "scripts": {
         "start": "node server.js",

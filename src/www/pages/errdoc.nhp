@@ -1,2 +1,10 @@
 <h1>{{title}}</h1>
 <p>{{message}}</p>
+<?if error?>
+  <?if error.stack?>
+    <code class="expandable" style="text-align: left"><h1>{{error.stack.replace(/^([^\n]+)\n(.|\n)+$/m, "$1")}}</h1>
+      {{error.stack.replace(/^[^\n]+\n((.|\n)+)$/m, "$1")}}</code>
+  <?else?>
+    <code class="expandable" style="text-align: left"><h1>{{error}}</h1></code>
+  <?endif?>
+<?endif?>
